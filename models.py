@@ -19,9 +19,8 @@ class City(BaseModel):
 
 class School(BaseModel):
 
-    school_id = PrimaryKeyField()
     name = CharField()
-    city = ForeignKeyField(City)
+    city = CharField()
 
 
 class Applicant(BaseModel):
@@ -37,11 +36,10 @@ class Applicant(BaseModel):
 
 
 class Mentor(BaseModel):
-    mentor_id = PrimaryKeyField()
+
     first_name = CharField()
     last_name = CharField()
     school_id = ForeignKeyField(School)
-
 
 
 
