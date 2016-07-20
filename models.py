@@ -41,11 +41,3 @@ class Mentor(BaseModel):
     first_name = CharField()
     last_name = CharField()
     school_id = IntegerField()
-
-
-
-
-
-
-
-# class InterviewSlot(BaseModel):
