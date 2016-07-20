@@ -53,13 +53,22 @@ mentors = [
          'school_id': 2},
         {'first_name': 'Ethel',
          'last_name': 'Orlando',
-         'school_id': 4}
+         'school_id': 4},
         {'first_name': 'Grandmaster',
          'last_name': 'Algalwillow',
          'school_id': 3},
         {'first_name': 'Pumpkin',
          'last_name': 'Marshmallow',
          'school_id': 2}
+]
+
+applicants = [
+    {'applicant_code': 'ze23jh',
+     'first_name': 'Bob',
+     'last_name': 'Marley',
+     'year_of_birth': 1966,
+     'gender': 'male',
+     'city': 'Budapest'}
 ]
 
 
@@ -81,6 +90,17 @@ def add_mentors():
                       last_name=mentor['last_name'],
                       school_id=mentor['school_id'])
 
+def add_apllicants():
+    for applicant in applicants:
+        Applicant.create(applicant_code=applicant['applicant_code'],
+                         first_name=applicant['first_name'],
+                         last_name=applicant['last_name'],
+                         year_of_birth=applicant['year_of_birth'],
+                         gender=applicant['gender'],
+                         city=applicant['city']
+                         )
+
 add_city()
 add_schools()
 add_mentors()
+# add_apllicants()
