@@ -3,7 +3,8 @@ from peewee import *
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-db = PostgresqlDatabase('palko', user='palko')
+answer = input("Please give me your database name!\nBe aware the database name is equal with your username!\n")
+db = PostgresqlDatabase(answer, user=answer)
 
 
 class BaseModel(Model):
