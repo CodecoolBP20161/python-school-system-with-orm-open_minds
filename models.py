@@ -31,7 +31,7 @@ class Applicant(BaseModel):
     last_name = CharField()
     year_of_birth = IntegerField()
     gender = CharField()
-    adress = CharField()
+    city = CharField()
     is_valued = BooleanField(default=None)
     accepted = BooleanField(default=None)
 
