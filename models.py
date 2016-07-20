@@ -1,10 +1,15 @@
 from peewee import *
 
-# Configure your database connection here
-# database name = should be your username on your laptop
-# database user = should be your username on your laptop
-answer = input("Please give me your database name!\nBe aware the database name is equal with your username!\n")
-db = PostgresqlDatabase(answer, user=answer)
+# This is usefull, after we oushed the final version
+# db_name = input("Give me your database name: ")
+# user_name = input("Give me your user name: ")
+
+# This is the test version for us
+# tester_list = ['lombocska', 'dacid', 'ppayter', 'palko']
+answer = input("Give me your user name: ")
+user_name = answer
+db_name = answer
+db = PostgresqlDatabase(db_name, user=user_name)
 
 
 class BaseModel(Model):
