@@ -4,21 +4,21 @@ from models import *
 
 cities = [
     {'city': 'Eger',
-     'nearest_city': 'Miskolc'},
+     'nearest_school': 'Codecool Miskolc'},
     {'city': 'Debrecen',
-     'nearest_city': 'Miskolc'},
+     'nearest_school': 'Codecool Miskolc'},
     {'city': 'Warsaw',
-     'nearest_city': 'Krakow'},
+     'nearest_school': 'Codecool Krakow'},
     {'city': 'Barcelona',
-     'nearest_city': 'Madrid'},
+     'nearest_school': 'Codecool Madrid'},
     {'city': 'Győr',
-     'nearest_city': 'Budapest'},
+     'nearest_school': 'Codecool Budapest'},
     {'city': 'Paris',
-     'nearest_city': 'Madrid'},
+     'nearest_school': 'Codecool Madrid'},
     {'city': 'Rome',
-     'nearest_city': 'Budapest'},
+     'nearest_school': 'Codecool Budapest'},
     {'city': 'St. Petersburg',
-     'nearest_city': 'Krakow'}
+     'nearest_school': 'Codecool Krakow'}
 ]
 
 schools = [
@@ -141,7 +141,7 @@ applicants = [
 def add_city():
     for city in cities:
         City.create(name=city['city'],
-                    nearest_city=city['nearest_city'])
+                    nearest_school=city['nearest_school'])
 
 
 def add_schools():
