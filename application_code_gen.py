@@ -7,24 +7,26 @@ from models import *
 existing_application_codes = []
 
 
-def get_ids():
-    for applicant in Applicant:
+def get_application_code():
+    for applicant in Applicant.select():
         existing_application_codes.append(applicant.application_code)
-    return
+    return existing_application_codes
 
 
 def app_code_generator():
     new_code = str(uuid.uuid4())[:6]
-    if new_code not in existing_application_codes:
+    if new_code not in get_application_code():
         return new_code
     else:
         return app_code_generator()
 
 
 def assign_app_codes():
-    for applicant in Applicant.select():
-        get_ids()
-        applicant.update(application_code=app_code_generator()).where(applicant.status == 'new').execute()
-        applicant.update(status='in progress').execute()
+    for applicant in Applicant.select().where(Applicant.status == 'new'):
+            applicant.application_code = app_code_generator()
+            applicant.status = 'in progress'
+            applicant.save()
+
+
 
 assign_app_codes()
