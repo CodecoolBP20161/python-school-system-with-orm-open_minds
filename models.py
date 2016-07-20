@@ -26,14 +26,14 @@ class School(BaseModel):
 
 class Applicant(BaseModel):
 
-    applicant_code = CharField(default=None)
+    applicant_code = CharField(null=True)
     first_name = CharField()
     last_name = CharField()
     year_of_birth = IntegerField()
     gender = CharField()
     city = CharField()
-    is_valued = BooleanField(default=None)
-    accepted = BooleanField(default=None)
+    is_valued = BooleanField(null=True)
+    accepted = BooleanField(null=True)
 
 
 class Mentor(BaseModel):
