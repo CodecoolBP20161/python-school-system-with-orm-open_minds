@@ -14,6 +14,10 @@ Schools = [
      'city': 'Budapest'}
     {'name': 'Codecool Miskolc'
      'city': 'Miskolc'}
+    {'name': 'Codecool Krakow'
+     'city': 'Krakow'}
+    {'name': 'Codecool Madrid'
+     'city': 'Madrid'}
 ]
 
 
