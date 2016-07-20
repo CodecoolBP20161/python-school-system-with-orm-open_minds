@@ -29,7 +29,7 @@ class Applicant(BaseModel):
     applicant_code = CharField(default=None)
     first_name = CharField()
     last_name = CharField()
-    year_of_birth = DateField()
+    year_of_birth = IntegerField()
     gender = CharField()
     adress = CharField()
     is_valued = BooleanField(default=None)
