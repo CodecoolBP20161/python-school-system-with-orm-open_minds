@@ -32,8 +32,7 @@ class Applicant(BaseModel):
     year_of_birth = IntegerField()
     gender = CharField()
     city = CharField()
-    is_valued = BooleanField(null=True)
-    accepted = BooleanField(null=True)
+    status = CharField()
 
 
 class Mentor(BaseModel):
