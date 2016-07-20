@@ -16,7 +16,7 @@ class BaseModel(Model):
 class City(BaseModel):
 
     name = CharField()
-    nearest_city = CharField()
+    nearest_school = CharField()
 
 
 class School(BaseModel):
