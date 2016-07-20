@@ -3,7 +3,7 @@ from peewee import *
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-db = PostgresqlDatabase('david', user='david')
+db = PostgresqlDatabase('palko', user='palko')
 
 
 class BaseModel(Model):
@@ -26,12 +26,12 @@ class School(BaseModel):
 
 class Applicant(BaseModel):
 
-    applicant_code = CharField()
+    applicant_code = CharField(default=None)
     first_name = CharField()
     last_name = CharField()
-    year_of_birth = DateField()
+    year_of_birth = IntegerField()
     gender = CharField()
-    adress = CharField()
+    city = CharField()
     is_valued = BooleanField(default=None)
     accepted = BooleanField(default=None)
 
