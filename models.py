@@ -27,7 +27,7 @@ class School(BaseModel):
 
 class Applicant(BaseModel):
 
-    applicant_code = CharField(null=True)
+    application_code = CharField(null=True)
     first_name = CharField()
     last_name = CharField()
     year_of_birth = IntegerField()
