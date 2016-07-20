@@ -40,7 +40,7 @@ class Mentor(BaseModel):
 
     first_name = CharField()
     last_name = CharField()
-    school_id = ForeignKeyField(School)
+    school_id = IntegerField()
 
 
 
