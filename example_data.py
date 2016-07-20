@@ -40,14 +40,14 @@ mentors = [
          'last_name': 'Salamon',
          'school_id': 1},
         {'first_name': 'Tamás',
-          'last_name': 'Tompa',
-          'school_id': 1},
+         'last_name': 'Tompa',
+         'school_id': 1},
         {'first_name': 'Stanislaw',
-          'last_name': 'Bullshitowski',
-          'school_id': 3},
+         'last_name': 'Bullshitowski',
+         'school_id': 3},
         {'first_name': 'Anna',
-          'last_name': 'Conda',
-          'school_id': 4},
+         'last_name': 'Conda',
+         'school_id': 4},
         {'first_name': 'Tibor',
          'last_name': 'Balogh',
          'school_id': 2},
@@ -62,13 +62,79 @@ mentors = [
          'school_id': 2}
 ]
 
+# Can be new/in progress/accepted/rejected
 applicants = [
     {'applicant_code': 'ze23jh',
      'first_name': 'Bob',
      'last_name': 'Marley',
      'year_of_birth': 1966,
      'gender': 'male',
-     'city': 'Budapest'}
+     'city': 'Budapest',
+     'status': 'accepted'},
+
+    {'applicant_code': 'dev666',
+     'first_name': 'Devil',
+     'last_name': 'Lawyer',
+     'year_of_birth': 1966,
+     'gender': 'male',
+     'city': 'Hell',
+     'status': 'rejected'},
+
+    {'applicant_code': 'nir333',
+     'first_name': 'Curt',
+     'last_name': 'Cobain',
+     'year_of_birth': 1967,
+     'gender': 'male',
+     'city': 'Rome',
+     'status': 'in progress'},
+
+    {'applicant_code': None,
+     'first_name': 'Pam',
+     'last_name': 'Pam',
+     'year_of_birth': 1993,
+     'gender': 'notsure',
+     'city': 'Győr',
+     'status': 'new'},
+
+    {'applicant_code': None,
+     'first_name': 'Frodo',
+     'last_name': 'Baggins',
+     'year_of_birth': 2000,
+     'gender': 'male',
+     'city': 'Debrecen',
+     'status': 'new'},
+
+    {'applicant_code': None,
+     'first_name': 'Elvis',
+     'last_name': 'Presley',
+     'year_of_birth': 1935,
+     'gender': 'male',
+     'city': 'Barcelona',
+     'status': 'new'},
+
+    {'applicant_code': None,
+     'first_name': 'Andreste',
+     'last_name': 'Éimhear',
+     'year_of_birth': 1909,
+     'gender': 'female',
+     'city': 'Budapest',
+     'status': 'new'},
+
+    {'applicant_code': None,
+     'first_name': 'Jean',
+     'last_name': 'D\'Arc',
+     'year_of_birth': 1412,
+     'gender': 'female',
+     'city': 'Paris',
+     'status': 'new'},
+
+    {'applicant_code': None,
+     'first_name': 'Krystyna',
+     'last_name': 'Rudaski',
+     'year_of_birth': 1980,
+     'gender': 'female',
+     'city': 'Krakkow',
+     'status': 'new'}
 ]
 
 
@@ -90,17 +156,19 @@ def add_mentors():
                       last_name=mentor['last_name'],
                       school_id=mentor['school_id'])
 
-def add_apllicants():
+
+def add_applicants():
     for applicant in applicants:
         Applicant.create(applicant_code=applicant['applicant_code'],
                          first_name=applicant['first_name'],
                          last_name=applicant['last_name'],
                          year_of_birth=applicant['year_of_birth'],
                          gender=applicant['gender'],
-                         city=applicant['city']
+                         city=applicant['city'],
+                         status=applicant['status']
                          )
 
 add_city()
 add_schools()
 add_mentors()
-# add_apllicants()
+add_applicants()
