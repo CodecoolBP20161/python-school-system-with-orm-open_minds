@@ -2,7 +2,7 @@
 
 from models import *
 
-Cities = [
+cities = [
     {'city': 'Eger',
      'nearest_city': 'Miskolc'},
     {'city': 'Debrecen',
@@ -21,7 +21,7 @@ Cities = [
      'nearest_city': 'Krakow'}
 ]
 
-Schools = [
+schools = [
     {'name': 'Codecool Budapest',
      'city': 'Budapest'},
     {'name': 'Codecool Miskolc',
@@ -32,18 +32,55 @@ Schools = [
      'city': 'Madrid'}
 ]
 
+mentors = [
+        {'first_name': 'Miklós',
+         'last_name': 'Beöthy',
+         'school_id': 1},
+        {'first_name': 'Dániel',
+         'last_name': 'Salamon',
+         'school_id': 1},
+        {'first_name': 'Tamás',
+          'last_name': 'Tompa',
+          'school_id': 1},
+        {'first_name': 'Stanislaw',
+          'last_name': 'Bullshitowski',
+          'school_id': 3},
+        {'first_name': 'Anna',
+          'last_name': 'Conda',
+          'school_id': 4},
+        {'first_name': 'Tibor',
+         'last_name': 'Balogh',
+         'school_id': 2},
+        {'first_name': 'Ethel',
+         'last_name': 'Orlando',
+         'school_id': 4}
+        {'first_name': 'Grandmaster',
+         'last_name': 'Algalwillow',
+         'school_id': 3},
+        {'first_name': 'Pumpkin',
+         'last_name': 'Marshmallow',
+         'school_id': 2}
+]
+
 
 def add_city():
-    for city in Cities:
+    for city in cities:
         City.create(name=city['city'],
                     nearest_city=city['nearest_city'])
 
 
 def add_schools():
-    for school in Schools:
+    for school in schools:
         School.create(name=school['name'],
                       city=school['city'])
 
 
+def add_mentors():
+    for mentor in mentors:
+        Mentor.create(first_name=mentor['first_name'],
+                      last_name=mentor['last_name'],
+                      school_id=mentor['school_id'])
+
 add_city()
 add_schools()
+add_mentors()
