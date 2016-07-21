@@ -5,7 +5,7 @@ from peewee import *
 # user_name = input("Give me your user name: ")
 
 # This is the test version for us:
-answer = "david"
+answer = "lombocska"
 db_name = answer
 username = answer
 
@@ -42,7 +42,9 @@ class Applicant(BaseModel):
     status = CharField()
 
     def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        full_name = self.first_name + " " + self.last_name
+        return "Name: {}\nApplicant code: {}\nYear of birth: {}\nGender: {}\nCity: {}\nSchool: {}\nStatus: {}\n".format(full_name,
+                self.application_code, self.year_of_birth, self.gender, self.city, self.assigned_school, self.status)
 
 
 class Mentor(BaseModel):
