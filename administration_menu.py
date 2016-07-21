@@ -5,12 +5,6 @@ import os
 import sys
 
 
-def filtering(arg):
-    """Filter by {}""".format(arg)
-    answer = input("Give me a kind of {}: ".format(arg))
-    pass
-
-
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
