@@ -3,6 +3,14 @@
 from models import *
 
 cities = [
+    {'city': 'Budapest',
+     'nearest_school': 'Codecool Budapest'},
+    {'city': 'Miskolc',
+     'nearest_school': 'Codecool Miskolc'},
+    {'city': 'Krakow',
+     'nearest_school': 'Codecool Krakow'},
+    {'city': 'Madrid',
+     'nearest_school': 'Codecool Madrid'},
     {'city': 'Eger',
      'nearest_school': 'Codecool Miskolc'},
     {'city': 'Debrecen',
