@@ -22,11 +22,9 @@ def app_code_generator():
 
 
 def assign_app_codes():
-    for applicant in Applicant.select().where(Applicant.status == 'new'):
+    for applicant in Applicant.select().where(Applicant.application_code == None):
             applicant.application_code = app_code_generator()
-            applicant.status = 'in progress'
             applicant.save()
-
 
 
 assign_app_codes()
