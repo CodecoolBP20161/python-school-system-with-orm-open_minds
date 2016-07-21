@@ -47,3 +47,12 @@ class Mentor(BaseModel):
     first_name = CharField()
     last_name = CharField()
     school_id = IntegerField()
+
+
+class InterviewSlot(BaseModel):
+
+    date_time = DateTimeField()
+    duration = IntegerField()
+    reserved = BooleanField()
+    mentor = CharField()
+    applicant = CharField()
