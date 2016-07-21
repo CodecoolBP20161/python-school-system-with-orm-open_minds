@@ -5,10 +5,14 @@ from peewee import *
 # user_name = input("Give me your user name: ")
 
 # This is the test version for us
-# tester_list = ['lombocska', 'dacid', 'ppayter', 'palko']
-answer = input("Give me your user name: ")
-user_name = answer
-db_name = answer
+tester_list = ['lombocska', 'dacid', 'ppayter', 'palko']
+for user in tester_list:
+    try:
+        user_name = user
+        db_name = user
+    except peewee.OperationalError:
+        pass
+
 db = PostgresqlDatabase(db_name, user=user_name)
 
 
