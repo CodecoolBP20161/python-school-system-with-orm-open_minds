@@ -154,6 +154,14 @@ applicants = [
      'status': 'new'}
 ]
 
+interviews = [
+    {'duration': '',
+     'reserved': '',
+     'mentor': '',
+     'applicant': ''}
+
+]
+
 
 def add_city():
     for city in cities:
@@ -185,3 +193,13 @@ def add_applicants():
                          assigned_school=applicant['assigned_school'],
                          status=applicant['status']
                          )
+
+
+def add_interview_slot():
+    for interview in interviews:
+        InterviewSlot.create(date_time=interviews['date_time']
+                             duration=interviews['duration']
+                             reserved=interviews['reserved']
+                             mentor=interviews['mentor']
+                             applicant=interviews['applicant']
+                             )
