@@ -15,8 +15,16 @@ def get_nearest_school():
         for city in nearest_school:
             if new_applicant_city[element] == city:
                 result[element] = nearest_school[city]
+    # print(result)
 
     for element in result:
-        print("The {} make contact with {}".format(result[element], element))
+        print("The {} made contact with {}".format(result[element], element))
 
-get_nearest_school()
+    for applicant in Applicant.select().where(Applicant.status == 'new'):
+        applicant.status = 'in progress'
+        applicant.save()
+        for element in result:
+            # print(element, applicant.first_name)
+            if element == applicant.first_name:
+                applicant.assigned_school = result[element]
+                applicant.save()
