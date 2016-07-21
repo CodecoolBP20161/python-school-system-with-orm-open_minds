@@ -53,6 +53,5 @@ class InterviewSlot(BaseModel):
 
     date_time = DateTimeField()
     duration = IntegerField()
-    reserved = BooleanField()
     mentor = CharField()
-    applicant = CharField()
+    applicant = CharField(null=True)
