@@ -9,7 +9,9 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def menu_loop():
+
+def applicant_menu_loop():
+    """Applicant"""
     choice = None
 
     while choice != '0':
@@ -32,8 +34,6 @@ def get_applicant_data():
               applicant.year_of_birth, applicant.gender, applicant.assigned_school, applicant.status))
 
 
-
-
 def get_interview_details():
     """My personal interview data"""
     app_code = input("Please, give your application code: ")
@@ -46,5 +46,3 @@ menu=OrderedDict([
     ('1', get_applicant_data),
     ('2', get_interview_details)
 ])
-
-menu_loop()
