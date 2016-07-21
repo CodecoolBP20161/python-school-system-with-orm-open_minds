@@ -1,7 +1,6 @@
 from models import *
 
 
-
 class ContactSchool:
 
     new_applicant_city = {}
