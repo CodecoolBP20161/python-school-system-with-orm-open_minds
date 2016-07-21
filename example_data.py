@@ -185,8 +185,3 @@ def add_applicants():
                          assigned_school=applicant['assigned_school'],
                          status=applicant['status']
                          )
-
-add_city()
-add_schools()
-add_mentors()
-add_applicants()
