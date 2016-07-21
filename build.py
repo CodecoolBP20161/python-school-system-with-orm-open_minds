@@ -4,5 +4,5 @@ from models import *
 
 db.connect()
 # List the tables here what you want to create...
-db.drop_tables([Applicant, Mentor, School, City], safe=True)
-db.create_tables([Applicant, Mentor, School, City], safe=True)
+db.drop_tables([Applicant, Mentor, School, City, InterviewSlot], safe=True)
+db.create_tables([Applicant, Mentor, School, City, InterviewSlot], safe=True)

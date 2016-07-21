@@ -5,7 +5,7 @@ from peewee import *
 # user_name = input("Give me your user name: ")
 
 # This is the test version for us:
-answer = "lombocska"
+answer = "david"
 db_name = answer
 username = answer
 
@@ -54,8 +54,7 @@ class Mentor(BaseModel):
 
 class InterviewSlot(BaseModel):
 
-    date = CharField()
-    time = CharField()
+    date_time = DateTimeField()
     duration = IntegerField()
     mentor = CharField()
     applicant = CharField(null=True)
