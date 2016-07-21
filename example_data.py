@@ -72,12 +72,13 @@ mentors = [
 
 # Can be new/in progress/accepted/rejected
 applicants = [
-    {'application_code': 'ze23jh',
+    {'application_code': 'thc420',
      'first_name': 'Bob',
      'last_name': 'Marley',
      'year_of_birth': 1966,
      'gender': 'male',
-     'city': 'Budapest',
+     'city': 'Jamaica',
+     'assigned_school': 'Codecool Budapest',
      'status': 'accepted'},
 
     {'application_code': 'dev666',
@@ -86,6 +87,7 @@ applicants = [
      'year_of_birth': 1966,
      'gender': 'male',
      'city': 'Hell',
+     'assigned_school': 'Codecool Budapest',
      'status': 'rejected'},
 
     {'application_code': 'nir333',
@@ -94,6 +96,7 @@ applicants = [
      'year_of_birth': 1967,
      'gender': 'male',
      'city': 'Rome',
+     'assigned_school': 'Codecool Budapest',
      'status': 'in progress'},
 
     {'application_code': None,
@@ -102,6 +105,7 @@ applicants = [
      'year_of_birth': 1993,
      'gender': 'notsure',
      'city': 'Győr',
+     'assigned_school': None,
      'status': 'new'},
 
     {'application_code': None,
@@ -110,6 +114,7 @@ applicants = [
      'year_of_birth': 2000,
      'gender': 'male',
      'city': 'Debrecen',
+     'assigned_school': None,
      'status': 'new'},
 
     {'application_code': None,
@@ -118,6 +123,7 @@ applicants = [
      'year_of_birth': 1935,
      'gender': 'male',
      'city': 'Barcelona',
+     'assigned_school': None,
      'status': 'new'},
 
     {'application_code': None,
@@ -126,6 +132,7 @@ applicants = [
      'year_of_birth': 1909,
      'gender': 'female',
      'city': 'Budapest',
+     'assigned_school': None,
      'status': 'new'},
 
     {'application_code': None,
@@ -134,6 +141,7 @@ applicants = [
      'year_of_birth': 1412,
      'gender': 'female',
      'city': 'Paris',
+     'assigned_school': None,
      'status': 'new'},
 
     {'application_code': None,
@@ -142,6 +150,7 @@ applicants = [
      'year_of_birth': 1980,
      'gender': 'female',
      'city': 'Krakow',
+     'assigned_school': None,
      'status': 'new'}
 ]
 
@@ -173,6 +182,7 @@ def add_applicants():
                          year_of_birth=applicant['year_of_birth'],
                          gender=applicant['gender'],
                          city=applicant['city'],
+                         assigned_school=applicant['assigned_school'],
                          status=applicant['status']
                          )
 

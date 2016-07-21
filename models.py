@@ -5,7 +5,7 @@ from peewee import *
 # user_name = input("Give me your user name: ")
 
 # This is the test version for us:
-answer = input("Give me the username: ")
+answer = "palko"
 db_name = answer
 username = answer
 
@@ -38,6 +38,7 @@ class Applicant(BaseModel):
     year_of_birth = IntegerField()
     gender = CharField()
     city = CharField()
+    assigned_school = CharField(null=True)
     status = CharField()
 
 
