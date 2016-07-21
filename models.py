@@ -1,10 +1,10 @@
 from peewee import *
 
-# This is usefull, after we oushed the final version
+# This is useful, after we pushed the final version
 # db_name = input("Give me your database name: ")
 # user_name = input("Give me your user name: ")
 
-# This is the test version for us
+# This is the test version for us:
 tester_list = ['lombocska', 'dacid', 'ppayter', 'palko']
 for user in tester_list:
     try:
