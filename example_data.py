@@ -141,7 +141,7 @@ applicants = [
      'last_name': 'Rudaski',
      'year_of_birth': 1980,
      'gender': 'female',
-     'city': 'Krakkow',
+     'city': 'Krakow',
      'status': 'new'}
 ]
 
