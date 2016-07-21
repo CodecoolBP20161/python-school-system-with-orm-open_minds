@@ -1,6 +1,7 @@
-from contact_school import get_nearest_school
+from contact_school import ContactSchool
 from application_code_gen import assign_app_codes
 from example_data import *
+from interview_slot_handling import InterviewHandling
 
 
 add_city()
@@ -21,4 +22,6 @@ input("[Press Enter]")
 assign_app_codes()
 print("Applicants get code.")
 input("[Press Enter]")
-get_nearest_school()
+ContactSchool.get_nearest_school()
+input("[Press Enter]")
+InterviewHandling.check_reserved_interviews()
