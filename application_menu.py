@@ -34,8 +34,17 @@ def get_applicant_data():
 
 
 
+def get_interview_details():
+    """My personal interview data"""
+    app_code = input("Please, give your application code: ")
+    for interview in InterviewSlot.select().where(InterviewSlot.applicant == app_code):
+        print("School: {}\nDate of interview: {}\nMentor: {}\n".format(
+              interview.school_name, interview.date_time, interview.mentor))
+
+
 menu=OrderedDict([
     ('1', get_applicant_data),
+    ('2', get_interview_details)
 ])
 
 menu_loop()
