@@ -55,7 +55,7 @@ def filter_by_name():
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
     for applicant in Applicant.select().where((Applicant.first_name.contains(first_name))
-                                              & (Applicant.contains(last_name))):
+                                              & (Applicant.last_name.contains(last_name))):
         print(applicant)
 
 
