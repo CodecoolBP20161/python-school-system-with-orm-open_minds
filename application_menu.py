@@ -39,7 +39,7 @@ def get_interview_details():
     """My personal interview data"""
     app_code = input("Please, give your application code: ")
     for interview in InterviewSlot.select().where(InterviewSlot.applicant == app_code):
-        print("\nSchool: {}\nDate of interview: {}\nMentor: {}\n".format(
+        print("\nSchool: {}\nDate and time of interview: {}\nMentor: {}\n".format(
               interview.school_name, interview.date_time, interview.mentor))
 
 # This library allows you can choose an operation.
