@@ -28,7 +28,7 @@ def administrator_menu_loop():
 def filter_by_status():
     """Filter by status"""
     answer = input("Give me a kind of status: ")
-    for applicant in Applicant.select().where(Applicant.status == answer):
+    for applicant in Applicant.select().where(Applicant.status.contains(answer)):
         print(applicant)
 
 
@@ -42,7 +42,7 @@ def filter_by_year():
 def filter_by_location():
     """Filter by location"""
     answer = input("Give me a location: ")
-    for applicant in Applicant.select().where(Applicant.city == answer):
+    for applicant in Applicant.select().where(Applicant.city.contains(answer)):
         print(applicant)
 
 
@@ -50,21 +50,24 @@ def filter_by_name():
     """Filter by name"""
     first_name = input("Give me first name: ")
     last_name = input("Give me last name: ")
-    for applicant in Applicant.select().where((Applicant.first_name == first_name) & (Applicant.last_name == last_name)):
+    for applicant in Applicant.select().where((Applicant.first_name.contains(first_name))
+                                                      & (Applicant.contains(last_name))):
         print(applicant)
 
 
 def filter_by_school():
-    """Filter by shool"""
+    """Filter by school"""
     answer = input("Give me a school: ")
-    for applicant in Applicant.select().where(Applicant.assigned_school == answer):
+    for applicant in Applicant.select().where(Applicant.assigned_school.contains(answer)):
         print(applicant)
 
 
 def filter_by_mentor_name():
     """Filter by mentor name"""
     answer = input("Give me a mentor name: ")
-    for applicant in Applicant.select().join(InterviewSlot, on=(Applicant.application_code==InterviewSlot.applicant)).where(InterviewSlot.mentor == answer):
+    for applicant in Applicant.select().join(InterviewSlot,
+                                             on=(Applicant.application_code==InterviewSlot.applicant))\
+            .where(InterviewSlot.mentor.contains(answer)):
         print(applicant)
 
 
