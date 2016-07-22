@@ -1,9 +1,9 @@
-# This script can generate example data for "City" and "InterviewSlot" models.
-
 from models import *
-from datetime import *
 
-# lists with example data
+"""
+Lists with example data.
+"""
+
 cities = [
     {'city': 'Budapest',
      'nearest_school': 'Codecool Budapest'},
@@ -72,7 +72,6 @@ mentors = [
          'school_id': 2}
 ]
 
-# Can be new/in progress/accepted/rejected
 applicants = [
     {'application_code': 'thc420',
      'first_name': 'Bob',
@@ -205,8 +204,11 @@ interviews = [
      'school_name': 'Codecool Miskolc'}
 ]
 
+"""
+These functions fills the tables with example data's.
+"""
 
-# these functions fills the tables with example datas
+
 def add_city():
     for city in cities:
         City.create(name=city['city'],
