@@ -7,17 +7,17 @@ class InterviewHandling:
 
     @staticmethod
     def interview_handling():
-        # This collect the all applicants and organize into "applicants" dict.
+        # Collects applicants and fills them into applicants{}
         # Example: applicants[key] = application_code, applicants[value] = assigned_school
         for applicant in Applicant.select():
             InterviewHandling.applicants[applicant.application_code] = applicant.assigned_school
-        # Who already have reserved interview slot delete them form the dictionary.
+        # Detects students already assigned to an interview and deletes them from the dictionary
         for interview in InterviewSlot.select().where(InterviewSlot.applicant != None):
             if interview.applicant in InterviewHandling.applicants:
                 del InterviewHandling.applicants[interview.applicant]
 
-        # Who haven't reserved interview slot get a new appointment.
-        # After that break the subloop and looking fo an other one.
+        # Assign students to free interview slots one by one
+        # The break stops the subloop and starts the assigning again with an other student
         for element in InterviewHandling.applicants:
             for interview in InterviewSlot.select().where(InterviewSlot.applicant == None):
                 if interview.school_name == InterviewHandling.applicants[element]:
@@ -25,14 +25,14 @@ class InterviewHandling:
                     interview.save()
                     break
 
-        # This checks the applicants who didn't get interview slot.
-        # Then deletes the ones who has interview slot.
+        # Checks whether an applicant is assigned to an interview
+        # In case they are, deletes them from the dictionary
         for interview in InterviewSlot.select().where(InterviewSlot.applicant != None):
             try:
                 del InterviewHandling.applicants[interview.applicant]
             except KeyError:
                 pass
 
-        # And print the dictionary element.
+        # Prints students who haven't been assigned to an interview
         for element in InterviewHandling.applicants:
             print("Unfortunately, we have no free interview slot left currently for {}".format(element))
