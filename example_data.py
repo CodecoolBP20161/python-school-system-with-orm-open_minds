@@ -3,6 +3,7 @@
 from models import *
 from datetime import *
 
+# lists with example data
 cities = [
     {'city': 'Budapest',
      'nearest_school': 'Codecool Budapest'},
@@ -205,6 +206,7 @@ interviews = [
 ]
 
 
+# these functions fills the tables with example datas
 def add_city():
     for city in cities:
         City.create(name=city['city'],
