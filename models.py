@@ -43,8 +43,9 @@ class Applicant(BaseModel):
 
     def __str__(self):
         full_name = self.first_name + " " + self.last_name
-        return "Name: {}\nApplicant code: {}\nYear of birth: {}\nGender: {}\nCity: {}\nSchool: {}\nStatus: {}\n".format(full_name,
-                self.application_code, self.year_of_birth, self.gender, self.city, self.assigned_school, self.status)
+        return "Name: {}\nApplicant code: {}\nYear of birth: {}\nGender: {}\nCity: {}\nSchool: {}\nStatus: {}\n".format\
+            (full_name, self.application_code, self.year_of_birth, self.gender, self.city, self.assigned_school,
+             self.status)
 
 
 class Mentor(BaseModel):
