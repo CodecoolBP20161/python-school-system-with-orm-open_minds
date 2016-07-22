@@ -5,11 +5,9 @@ from peewee import *
 # user_name = input("Give me your user name: ")
 
 # This is the test version for us:
-answer = "lombocska"
-db_name = answer
-username = answer
 
-db = PostgresqlDatabase(db_name, user=username)
+answer = ""
+db = PostgresqlDatabase(answer, user=answer)
 
 
 class BaseModel(Model):
@@ -32,7 +30,7 @@ class School(BaseModel):
 
 class Applicant(BaseModel):
 
-    application_code = CharField(null=True)
+    application_code = CharField(null=True, unique=True)
     first_name = CharField()
     last_name = CharField()
     year_of_birth = IntegerField()
@@ -44,8 +42,8 @@ class Applicant(BaseModel):
     def __str__(self):
         full_name = self.first_name + " " + self.last_name
         return "Name: {}\nApplicant code: {}\nYear of birth: {}\nGender: {}\nCity: {}\nSchool: {}\nStatus: {}\n".format\
-            (full_name, self.application_code, self.year_of_birth, self.gender, self.city, self.assigned_school,
-             self.status)
+            (full_name, self.application_code, self.year_of_birth,
+             self.gender, self.city, self.assigned_school, self.status)
 
 
 class Mentor(BaseModel):
@@ -60,5 +58,5 @@ class InterviewSlot(BaseModel):
     date_time = DateTimeField()
     duration = IntegerField()
     mentor = CharField()
-    applicant = CharField(null=True)
+    applicant = CharField(null=True, unique=True)
     school_name = CharField()
