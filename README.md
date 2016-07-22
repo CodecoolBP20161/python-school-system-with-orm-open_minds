@@ -1,5 +1,22 @@
 # School System
 
+## How to use the program
+
+You have to run  ```main.py```
+
+## User stories implemented:
+
+1) System / Handle new application
+
+2) System / Find possible interview date
+
+3) Applicant view / Application
+
+4) Applicant view / Interview
+
+6) Administrator view / Applicants
+
+
 ## The Story
 
 We're the developers of a new programming school which has an amazing number of new applicants every day :-) Let's call it Codecool!
@@ -63,8 +80,3 @@ In this project we will use the following technologies:
 -Question
 
 -Answer
-
-
-## How to use the program
-
-You have to run  ```main.py```
