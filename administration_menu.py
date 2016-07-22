@@ -1,21 +1,21 @@
-from models import *
 from collections import OrderedDict
-import datetime
+from models import *
 import os
-import sys
 
 
+# This clears the terminal window
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+# This is the main loop, which handling the sub menu choices.
 def administrator_menu_loop():
     """Administrator"""
     choice = None
 
     while choice != '0':
         print("Choose a filter on what you want to order the applicants!")
-        print("Enter '0' to quit.")
+        print("Enter '0' to main menu.")
         for key, value in menu.items():
             print('{}) {}'.format(key, value.__doc__))
         choice = input('Menu number: ').lower().strip()
@@ -23,6 +23,10 @@ def administrator_menu_loop():
         if choice in menu:
             clear()
             menu[choice]()
+
+"""
+This section defines the sub menu choices.
+"""
 
 
 def filter_by_status():
@@ -71,6 +75,7 @@ def filter_by_mentor_name():
         print(applicant)
 
 
+# This library allows you can choose an operation.
 menu = OrderedDict([
     ('1', filter_by_status),
     ('2', filter_by_year),
