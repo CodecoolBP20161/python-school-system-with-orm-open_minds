@@ -35,4 +35,5 @@ class InterviewHandling:
 
         # Prints students who haven't been assigned to an interview
         for element in InterviewHandling.applicants:
-            print("Unfortunately, we have no free interview slot left currently for {}".format(element))
+            print("Unfortunately, we have no free interview slot left\n\
+ for applicant with the application code {}".format(element))
