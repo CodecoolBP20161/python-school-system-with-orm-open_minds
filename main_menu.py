@@ -1,6 +1,8 @@
 from application_menu import *
 from administration_menu import *
 
+# This is the main loop, which handles the sub menu choices.
+
 
 def main_menu():
 
@@ -16,7 +18,7 @@ def main_menu():
             clear()
             menu[choice]()
 
-
+# This library allows you to choose an operation.
 menu=OrderedDict([
     ('1', applicant_menu_loop),
     ('2', administrator_menu_loop)
