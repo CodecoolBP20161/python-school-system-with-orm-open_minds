@@ -32,4 +32,4 @@ class InterviewHandling:
                 pass
 
         for element in InterviewHandling.applicants:
-            print("Unfortunately we haven't free interview slot currently for {}".format(element))
+            print("Unfortunately, we have no free interview slot left currently for {}".format(element))
