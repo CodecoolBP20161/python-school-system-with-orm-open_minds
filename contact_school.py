@@ -13,7 +13,8 @@ class ContactSchool:
         # After that organizes into "new_applicant_city" dictionary.
         for applicant in Applicant.select().where(Applicant.status == 'new'):
             ContactSchool.new_applicant_city[applicant.first_name] = applicant.city
-        # Collects all cities and the nearest schools assigned, then organizes into "nearest_school" dictionary.
+        # Collects all cities and the nearest schools assigned,
+        # then organizes them into "nearest_school" dictionary.
         for city in City.select():
             ContactSchool.nearest_school[city.name] = city.nearest_school
 

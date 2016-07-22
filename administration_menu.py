@@ -3,12 +3,12 @@ from models import *
 import os
 
 
-# This clears the terminal window
+# Clears the terminal window
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-# This is the main loop, which handles the sub menu choices.
+# This is the main menu loop, which handles the sub menu choices.
 def administrator_menu_loop():
     """Administrator"""
     choice = None
@@ -55,7 +55,7 @@ def filter_by_name():
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
     for applicant in Applicant.select().where((Applicant.first_name.contains(first_name))
-                                                      & (Applicant.contains(last_name))):
+                                              & (Applicant.contains(last_name))):
         print(applicant)
 
 

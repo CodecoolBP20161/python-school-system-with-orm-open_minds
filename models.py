@@ -1,6 +1,6 @@
 from peewee import *
 
-""" Tables are based on these models. """
+""" The tables are based on these models. """
 
 
 db_name = input("Give me your database name: ")
