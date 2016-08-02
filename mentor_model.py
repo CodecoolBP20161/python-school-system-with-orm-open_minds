@@ -1,5 +1,6 @@
 from models import *
 
+
 class Mentor(BaseModel):
     """  Mentor table based on Mentor model. """
     first_name = CharField()
