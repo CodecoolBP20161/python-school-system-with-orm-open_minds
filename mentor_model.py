@@ -1,12 +1,11 @@
 from models import *
-
+from school_model import School
 
 class Mentor(BaseModel):
     """  Mentor table based on Mentor model. """
     first_name = CharField()
     last_name = CharField()
-    # school_id = ForeignKeyField()
-    school_id = IntegerField()
+    school_id = ForeignKeyField(School, related_name="school_id")
     mentors = [
         {'first_name': 'Miklós',
          'last_name': 'Beöthy',
@@ -48,4 +47,4 @@ class Mentor(BaseModel):
         for mentor in Mentor.mentors:
             Mentor.create(first_name=mentor['first_name'],
                           last_name=mentor['last_name'],
-                          school_id=mentor['school_id'])
+                          school_id=School.select().where(School.id==mentor['school_id']))
