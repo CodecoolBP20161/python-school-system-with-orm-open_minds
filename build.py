@@ -1,9 +1,10 @@
 from models import *
+from school_model import School
 
 
-def build():
+db = PostgresqlDatabase("")
+db.connect()
+db.drop_tables([School], safe=True)
+db.create_tables([School], safe=True)
 
-    db.connect()
-    # List the tables here what you want to create...
-    db.drop_tables([Applicant, Mentor, School, City, InterviewSlot], safe=True)
-    db.create_tables([Applicant, Mentor, School, City, InterviewSlot], safe=True)
+School.add_schools()
