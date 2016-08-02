@@ -1,4 +1,5 @@
-from models import BaseModel
+from models import *
+from school_model import School
 
 
 class Applicant(BaseModel):
