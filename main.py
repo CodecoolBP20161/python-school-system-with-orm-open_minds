@@ -1,5 +1,5 @@
-from main_menu import *
 from build import *
+from main_menu import *
 
 
 # The InterviewSlot isn't fill with data.
@@ -16,11 +16,15 @@ input("[Press Enter]\n")
 Mentor.add_mentors()
 print("Mentors added.")
 input("[Press Enter]\n")
+InterviewSlot.add_interview_slot()
+print("Interview slots added.")
+input("[Press Enter]\n")
 Applicant.add_applicants()
 print("Applicant added.")
 input("[Press Enter]\n")
-# InterviewSlot.add_interview_slot()
-# print("Interview slots added.")
-# input("[Press Enter]\n")
+Applicant.finding_city()
+Applicant.set_app_code()
+Applicant.assign_interview_slot()
+
 input("[Press Enter to enter the user menu or press Ctrl+d to quit!]\n\n")
 main_menu()

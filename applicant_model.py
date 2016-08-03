@@ -1,6 +1,8 @@
 from models import *
 from school_model import School
 from city_model import City
+from interviewslot_model import InterviewSlot
+from mentor_model import Mentor
 import uuid
 
 
@@ -13,6 +15,7 @@ class Applicant(BaseModel):
     gender = CharField()
     city = CharField()
     assigned_school = ForeignKeyField(School, related_name='applicants', null=True)
+    interview_slot = ForeignKeyField(InterviewSlot, related_name='applicants', null=True)
     status = CharField()
 
     applicants = [
@@ -151,3 +154,25 @@ class Applicant(BaseModel):
             applicant.application_code = Applicant.app_code_gen()
             applicant.status = 'in progress'
             applicant.save()
+
+    @classmethod
+    def find_empty_interview_slot(cls):
+        return Applicant.select().where(Applicant.interview_slot >> None)
+
+    @classmethod
+    def assign_interview_slot(cls):
+        applicants = cls.find_empty_interview_slot()
+        for applicant in applicants:
+            applicant.set_interview_slot()
+
+    def set_interview_slot(self):
+        query = (InterviewSlot.select(InterviewSlot, Mentor)
+                 .join(Mentor).where(InterviewSlot.free, Mentor.school_id == self.assigned_school))
+        try:
+            slot = [i for i in query][0]
+            slot.free = False
+            slot.save()
+            self.interview_slot = slot
+            self.save()
+        except IndexError:
+            print('No more free interview slots')
