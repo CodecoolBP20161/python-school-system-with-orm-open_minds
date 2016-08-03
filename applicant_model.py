@@ -1,5 +1,6 @@
 from models import *
 from school_model import School
+import uuid
 
 
 class Applicant(BaseModel):
@@ -96,6 +97,8 @@ class Applicant(BaseModel):
          'status': 'new'}
     ]
 
+    existing_application_codes = []
+
     def __str__(self):
         full_name = self.first_name + " " + self.last_name
         return "Name: {}\nApplicant code: {}\nYear of birth: {}\nGender: {}\nCity: {}\nSchool: {}\nStatus: {}\n".format\
@@ -131,11 +134,23 @@ class Applicant(BaseModel):
             applicant.set_city()
 
     def set_city(self):
-        self.school = City.select(City.nearest_school).where(City.name == self.city)
+        self.assigned_school = City.select(City.nearest_school).where(City.name == self.city)
         self.save()
 
     @classmethod
-    def set_app_code(cls):
-        pass
+    def app_code_gen(cls):
+        new_code = str(uuid.uuid4())[:6]
+        if new_code not in Applicant.existing_application_codes:
+            Applicant.existing_application_codes.append(new_code)
+            return new_code
+        else:
+            app_code_gen()
 
-# print(Applicant.find_missing_app_code())
+    @classmethod
+    def set_app_code(cls):
+        applicants = Applicant.find_missing_app_code()
+        for applicant in applicants:
+            applicant.application_code = Applicant.app_code_gen()
+            applicant.status = 'in progress'
+            applicant.save()
+
