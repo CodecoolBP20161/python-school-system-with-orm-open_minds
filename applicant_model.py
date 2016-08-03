@@ -1,5 +1,6 @@
 from models import *
 from school_model import School
+from city_model import City
 import uuid
 
 
@@ -131,11 +132,8 @@ class Applicant(BaseModel):
         """Find nearest_school for applicants"""
         applicants = cls.find_missing_school()
         for applicant in applicants:
-            applicant.set_city()
-
-    def set_city(self):
-        self.assigned_school = City.select(City.nearest_school).where(City.name == self.city)
-        self.save()
+            applicant.assigned_school = City.select(City.nearest_school).where(City.name == Applicant.city)
+            applicant.save()
 
     @classmethod
     def app_code_gen(cls):
