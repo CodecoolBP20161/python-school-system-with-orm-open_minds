@@ -1,34 +1,26 @@
-from contact_school import ContactSchool
-from application_code_gen import assign_app_codes
-from example_data import *
-from interview_slot_handling import InterviewHandling
 from main_menu import *
-from build import build
+from build import *
 
 
+# The InterviewSlot isn't fill with data.
+# The database created, but when you run the menu the function called wrong path.
 build()
 print("Empty tables created :)")
 input("[Press Enter]\n")
-add_city()
-print("Cities added.")
-input("[Press Enter]\n")
-add_schools()
+School.add_schools()
 print("Schools added.")
 input("[Press Enter]\n")
-add_mentors()
+City.add_cities()
+print("Cities added.")
+input("[Press Enter]\n")
+Mentor.add_mentors()
 print("Mentors added.")
 input("[Press Enter]\n")
-add_applicants()
-print("Applicants added.")
+Applicant.add_applicants()
+print("Applicant added.")
 input("[Press Enter]\n")
-add_interview_slot()
-print("Interview slots added.")
-input("[Press Enter]\n")
-assign_app_codes()
-print("Applicants got their application code.")
-input("[Press Enter]\n")
-ContactSchool.get_nearest_school()
-input("[Press Enter]\n")
-InterviewHandling.interview_handling()
+# InterviewSlot.add_interview_slot()
+# print("Interview slots added.")
+# input("[Press Enter]\n")
 input("[Press Enter to enter the user menu or press Ctrl+d to quit!]\n\n")
 main_menu()
