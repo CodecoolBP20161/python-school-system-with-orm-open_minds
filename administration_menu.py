@@ -1,5 +1,6 @@
 from collections import OrderedDict
-from models import *
+from applicant_model import Applicant
+from interviewslot_model import InterviewSlot
 import os
 
 
@@ -55,19 +56,20 @@ def filter_by_name():
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
     for applicant in Applicant.select().where((Applicant.first_name.contains(first_name))
-                                                      & (Applicant.contains(last_name))):
+                                            & (Applicant.last_name.contains(last_name))):
         print(applicant)
 
 
 def filter_by_school():
     """Filter applicants by assigned school"""
     answer = input("Enter a school: ")
-    for applicant in Applicant.select().where(Applicant.assigned_school.contains(answer)):
+    for applicant in Applicant.select().where(Applicant.assigned_school == answer):
         print(applicant)
 
 
+
 def filter_by_mentor_name():
-    """Filter applicants by assigned mentors"""
+    """Filter applicants by assigned mentors, IT ISN'T WORKING!"""
     answer = input("Enter mentor's name: ")
     for applicant in Applicant.select().join(InterviewSlot,
                                              on=(Applicant.application_code==InterviewSlot.applicant))\

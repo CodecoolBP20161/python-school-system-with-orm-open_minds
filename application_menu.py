@@ -1,5 +1,6 @@
 from collections import OrderedDict
-from models import *
+from applicant_model import Applicant
+from interviewslot_model import InterviewSlot
 import os
 
 
@@ -29,7 +30,7 @@ This section defines the sub menu choices.
 
 
 def get_applicant_data():
-    """My application data"""
+    """My application data """
     app_code = input("Enter your application code: ")
     for applicant in Applicant.select().where(Applicant.application_code == app_code):
         print(applicant)
@@ -37,7 +38,7 @@ def get_applicant_data():
 
 def get_interview_details():
     """My personal interview data"""
-    app_code = input("Enter your application code: ")
+    app_code = input("Enter your application code: IT ISN'T WORKING!")
     for interview in InterviewSlot.select().where(InterviewSlot.applicant == app_code):
         print("\nSchool: {}\nDate and time of the interview: {}\nMentor: {}\n".format(
               interview.school_name, interview.date_time, interview.mentor))
