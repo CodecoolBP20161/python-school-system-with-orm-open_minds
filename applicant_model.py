@@ -175,4 +175,4 @@ class Applicant(BaseModel):
             self.interview_slot = slot
             self.save()
         except IndexError:
-            print('No more free interview slots')
+            print('No more free interview slots for {}'.format(self.application_code.upper()))
