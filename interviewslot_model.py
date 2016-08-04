@@ -13,7 +13,7 @@ class InterviewSlot(BaseModel):
     interviews = [
         {'date_time': '2016-11-20 10:00:00',
          'duration': 2,
-         'mentor': 'Beöthy',
+         'mentor': 'Beothy',
          'free': True},
         {'date_time': '2016-11-27 10:00:00',
          'duration': 2,
