@@ -51,7 +51,8 @@ class InterviewSlot(BaseModel):
     ]
 
     def __str__(self):
-        return str(self.id)
+        return "\nDate and time of the interview: {}\nSchool: {}\nMentor: {} {}\n".format(
+            self.date_time, self.duration, self.mentor.first_name, self.mentor.last_name)
 
     def add_interview_slot():
         for interview in InterviewSlot.interviews:
