@@ -1,10 +1,3 @@
-# from applicant_model import Applicant
-from mentor_model import Mentor
-from school_model import School
-from interviewslot_model import InterviewSlot
-from mentor_model import Mentor
-
-
 class Email:
 
     def __init__(self, **kwargs):
