@@ -155,7 +155,7 @@ class Applicant(BaseModel):
             applicant.application_code = Applicant.app_code_gen()
             applicant.status = 'in progress'
             applicant.save()
-        Applicant.find_handled_applications()
+        cls.find_handled_applications()
 
     @classmethod
     def find_empty_interview_slot(cls):
@@ -166,6 +166,7 @@ class Applicant(BaseModel):
         applicants = cls.find_empty_interview_slot()
         for applicant in applicants:
             applicant.set_interview_slot()
+        cls.find_applicant_interviews()
 
     def set_interview_slot(self):
         query = (InterviewSlot.select(InterviewSlot, Mentor)
@@ -190,7 +191,31 @@ Your have been assigned to {}.\nYour application code is {}.\n\n\
 We will contact you again soon with the details of your personal interview!\n\n\
 Cheers,\nMentors of {}".format(applicant.first_name, applicant.assigned_school.name,
                                applicant.application_code, applicant.assigned_school.name)
+
+            print('Sending email with assigned school and application code.')
             Email(user='', pwd='', to=[''],
                   subject=email_subject,
                   body=email_body).email_sender()
-            print('Email with assigned school and application code sent.')
+
+    @staticmethod
+    def find_applicant_interviews():
+        applicants = Applicant.select().where(Applicant.status == 'in progress')
+
+        for applicant in applicants:
+            email_subject = 'Your Codecool interview'
+            email_body = "Hi {},\n\nYour personal interview will be in {} at {}. Your interviewer \
+will be {} and the interview will take {} hours. Please bring your application code ({}) and some cookies :)\
+\n\nCheers,\nMentors of {}".format(applicant.first_name,
+                                   applicant.assigned_school.name,
+                                   applicant.interview_slot.date_time,
+                                   applicant.interview_slot.mentor.first_name +
+                                   ' ' + applicant.interview_slot.mentor.last_name,
+                                   applicant.interview_slot.duration,
+                                   applicant.application_code,
+                                   applicant.assigned_school.name
+                                   )
+
+            print('Sending email with information on assigned interview.')
+            Email(user='pofemalo@gmail.com', pwd='pofemalo123456789', to=['pofemalo@gmail.com'],
+                  subject=email_subject,
+                  body=email_body).email_sender()
