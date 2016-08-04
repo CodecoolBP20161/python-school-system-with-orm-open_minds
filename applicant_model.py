@@ -3,6 +3,7 @@ from school_model import School
 from city_model import City
 from interviewslot_model import InterviewSlot
 from mentor_model import Mentor
+from email_model import Email
 import uuid
 
 
@@ -154,6 +155,7 @@ class Applicant(BaseModel):
             applicant.application_code = Applicant.app_code_gen()
             applicant.status = 'in progress'
             applicant.save()
+        Applicant.find_handled_applications()
 
     @classmethod
     def find_empty_interview_slot(cls):
@@ -176,3 +178,19 @@ class Applicant(BaseModel):
             self.save()
         except IndexError:
             print('No more free interview slots for {}'.format(self.application_code.upper()))
+
+    @staticmethod
+    def find_handled_applications():
+        applicants = Applicant.select().where(Applicant.status == 'in progress')
+
+        for applicant in applicants:
+            email_subject = 'Your Codecool application has been handled!'
+            email_body = "Hi {},\n\nThank you for applying to Codecool!\n\n\
+Your have been assigned to {}.\nYour application code is {}.\n\n\
+We will contact you again soon with the details of your personal interview!\n\n\
+Cheers,\nMentors of {}".format(applicant.first_name, applicant.assigned_school.name,
+                               applicant.application_code, applicant.assigned_school.name)
+            Email(user='', pwd='', to=[''],
+                  subject=email_subject,
+                  body=email_body).email_sender()
+            print('Email with assigned school and application code sent.')
