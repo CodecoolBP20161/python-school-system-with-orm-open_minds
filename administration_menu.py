@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from applicant_model import Applicant
 from interviewslot_model import InterviewSlot
+from mentor_model import Mentor
 import os
 
 
@@ -62,18 +63,21 @@ def filter_by_name():
 
 def filter_by_school():
     """Filter applicants by assigned school"""
-    answer = input("Enter a school: ")
+    answer = input("Enter a school id: ")
     for applicant in Applicant.select().where(Applicant.assigned_school == answer):
         print(applicant)
-
+        # print(Applicant.assigned_school.name)
 
 
 def filter_by_mentor_name():
     """Filter applicants by assigned mentors, IT ISN'T WORKING!"""
     answer = input("Enter mentor's name: ")
-    for applicant in Applicant.select().join(InterviewSlot,
-                                             on=(Applicant.application_code==InterviewSlot.applicant))\
-            .where(InterviewSlot.mentor.contains(answer)):
+    # for applicant in Applicant.select().join(InterviewSlot,
+    #                                          on=(Applicant.application_code==InterviewSlot.applicant))\
+    #         .where(InterviewSlot.mentor.contains(answer)):
+    for applicant in Applicant.select().join(Mentor,
+                                             on=(Applicant.assigned_school==Mentor.school_id))\
+            .where(Applicant.assigned_school.contains(answer)):
         print(applicant)
 
 
