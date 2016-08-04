@@ -7,13 +7,13 @@ class Mentor(BaseModel):
     last_name = CharField()
     school_id = ForeignKeyField(School, related_name="school_id")
     mentors = [
-        {'first_name': 'Miklós',
-         'last_name': 'Beöthy',
+        {'first_name': 'Miklos',
+         'last_name': 'Beothy',
          'school_id': 1},
-        {'first_name': 'Dániel',
+        {'first_name': 'Daniel',
          'last_name': 'Salamon',
          'school_id': 1},
-        {'first_name': 'Tamás',
+        {'first_name': 'Tamas',
          'last_name': 'Tompa',
          'school_id': 1},
         {'first_name': 'Stanislaw',
