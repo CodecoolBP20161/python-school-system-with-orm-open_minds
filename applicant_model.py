@@ -3,7 +3,7 @@ from school_model import School
 from city_model import City
 from interviewslot_model import InterviewSlot
 from mentor_model import Mentor
-from email_model import Email
+from email_class import Email
 import uuid
 
 
@@ -216,6 +216,6 @@ will be {} and the interview will take {} hours. Please bring your application c
                                    )
 
             print('Sending email with information on assigned interview.')
-            Email(user='pofemalo@gmail.com', pwd='pofemalo123456789', to=['pofemalo@gmail.com'],
+            Email(user='', pwd='', to=[''],
                   subject=email_subject,
                   body=email_body).email_sender()
