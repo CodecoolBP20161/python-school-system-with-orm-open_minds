@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from applicant_model import Applicant
 from interviewslot_model import InterviewSlot
+from mentor_model import Mentor
 import os
 
 
@@ -62,20 +63,17 @@ def filter_by_name():
 
 def filter_by_school():
     """Filter applicants by assigned school"""
-    answer = input("Enter a school: ")
+    answer = input("Enter a school id: ")
     for applicant in Applicant.select().where(Applicant.assigned_school == answer):
         print(applicant)
 
 
-
-def filter_by_mentor_name():
-    """Filter applicants by assigned mentors, IT ISN'T WORKING!"""
-    answer = input("Enter mentor's name: ")
-    for applicant in Applicant.select().join(InterviewSlot,
-                                             on=(Applicant.application_code==InterviewSlot.applicant))\
-            .where(InterviewSlot.mentor.contains(answer)):
-        print(applicant)
-
+def filter_by_mentor_id():
+    """Filter applicants by assigned mentors"""
+    answer = int(input("Enter mentor's id: "))
+    for mentor in Mentor.select().where(Mentor.id == answer):
+        for element in mentor.interviews:
+            print(element.applicants.get())
 
 # This library allows you to choose an operation.
 menu = OrderedDict([
@@ -84,5 +82,5 @@ menu = OrderedDict([
     ('3', filter_by_location),
     ('4', filter_by_name),
     ('5', filter_by_school),
-    ('6', filter_by_mentor_name),
+    ('6', filter_by_mentor_id),
 ])
