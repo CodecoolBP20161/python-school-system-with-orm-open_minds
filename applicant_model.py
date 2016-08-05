@@ -178,7 +178,10 @@ class Applicant(BaseModel):
             self.interview_slot = slot
             self.save()
         except IndexError:
-            print('No more free interview slots for {}'.format(self.application_code.upper()))
+            if self.status == 'in progress':
+                print('No more free interview slots for {}'.format(self.application_code.upper()))
+            else:
+                pass
 
     @staticmethod
     def find_handled_applications():
@@ -193,7 +196,7 @@ Cheers,\nMentors of {}".format(applicant.first_name, applicant.assigned_school.n
                                applicant.application_code, applicant.assigned_school.name)
 
             print('Sending email with assigned school and application code.')
-            Email(user='', pwd='', to=[''],
+            Email(user='schoolsystemtester@gmail.com', pwd='schoolsystemtester123456789', to=['schoolsystemtester@gmail.com'],
                   subject=email_subject,
                   body=email_body).email_sender()
 
@@ -216,6 +219,6 @@ will be {} and the interview will take {} hours. Please bring your application c
                                    )
 
             print('Sending email with information on assigned interview.')
-            Email(user='', pwd='', to=[''],
+            Email(user='schoolsystemtester@gmail.com', pwd='schoolsystemtester123456789', to=['schoolsystemtester@gmail.com'],
                   subject=email_subject,
                   body=email_body).email_sender()
