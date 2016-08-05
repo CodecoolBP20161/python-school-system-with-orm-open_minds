@@ -52,7 +52,7 @@ class Applicant(BaseModel):
          'last_name': 'Pam',
          'year_of_birth': 1993,
          'gender': 'notsure',
-         'city': 'Gyor',
+         'city': 'Győr',
          'assigned_school': None,
          'status': 'new'},
 
@@ -76,7 +76,7 @@ class Applicant(BaseModel):
 
         {'application_code': None,
          'first_name': 'Andreste',
-         'last_name': 'Eimhear',
+         'last_name': 'Éimhear',
          'year_of_birth': 1909,
          'gender': 'female',
          'city': 'Budapest',
@@ -196,7 +196,7 @@ Cheers,\nMentors of {}".format(applicant.first_name, applicant.assigned_school.n
                                applicant.application_code, applicant.assigned_school.name)
 
             print('Sending email with assigned school and application code.')
-            Email(user='schoolsystemtester@gmail.com', pwd='schoolsystemtester123456789', to=['schoolsystemtester@gmail.com'],
+            Email(user='', pwd='', to=[''],
                   subject=email_subject,
                   body=email_body).email_sender()
 
@@ -219,6 +219,6 @@ will be {} and the interview will take {} hours. Please bring your application c
                                    )
 
             print('Sending email with information on assigned interview.')
-            Email(user='schoolsystemtester@gmail.com', pwd='schoolsystemtester123456789', to=['schoolsystemtester@gmail.com'],
+            Email(user='', pwd='', to=[''],
                   subject=email_subject,
                   body=email_body).email_sender()
