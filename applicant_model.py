@@ -52,7 +52,7 @@ class Applicant(BaseModel):
          'last_name': 'Pam',
          'year_of_birth': 1993,
          'gender': 'notsure',
-         'city': 'Győr',
+         'city': 'Gyor',
          'assigned_school': None,
          'status': 'new'},
 
@@ -76,7 +76,7 @@ class Applicant(BaseModel):
 
         {'application_code': None,
          'first_name': 'Andreste',
-         'last_name': 'Éimhear',
+         'last_name': 'Eimhear',
          'year_of_birth': 1909,
          'gender': 'female',
          'city': 'Budapest',
