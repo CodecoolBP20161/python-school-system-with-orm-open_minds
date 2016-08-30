@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% if session.logged_in %}
+    <!-- add_entry function needed -->
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>first name:
+            <dd><input type=text size=30 name=first_name>
+        <dt>last name:
+            <dd><input type=text size=30 name=last_name>
+        <dt>year of birth:
+            <dd><input type="number" class="numberinput" name=year_of_birth min="1970" max="1998" step="01">
+        <dt>gender:
+            <dd><select name="status" class="statusinput">
+                    <option value="female">female</option>
+                    <option value="male">male</option>
+                    <option value="other">other</option>
+                </select>
+        <dt>city:
+            <dd><input type=text size=30 name=city>
+        <dt><br><input type="submit" class="submitbutton" value="submit application">
+      </dl>
+    </form>
+{% endif %}
+
+{% endblock %}
