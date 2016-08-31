@@ -1,0 +1,27 @@
+<!doctype html>
+<title>
+    {% if title %}
+    {{ title }} | School System by OpenMinds
+    {% else %}
+    School System by OpenMinds
+    {% endif %}
+</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <a href="{{ url_for('show_main_page') }}" class="headerbutton"><h1>School System by OpenMinds</h1></a>
+    <div class=metanav>
+    <!-- form link -->
+    <a href="{{ url_for('signup') }}" class="navbutton">signup</a>
+    <!-- login link -->
+    {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}" class="navbutton">log in</a>
+    {% else %}
+    <a href="{{ url_for('logout') }} "class="navbutton">log out</a>
+    {% endif %}
+    </div>
+    {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>
+ 
