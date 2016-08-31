@@ -1,4 +1,4 @@
-from models import *
+from basemodel import *
 from school_model import School
 from city_model import City
 from interviewslot_model import InterviewSlot

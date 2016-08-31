@@ -1,7 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from model import Applicant
-import os
-
+from applicant_model import Applicant
 
 app = Flask(__name__)
 
@@ -9,16 +7,6 @@ app.config.update(dict(
    SECRET_KEY='development key',
    USERNAME='admin',
    PASSWORD='default'
-))
-app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
-
-
-app.config.update(dict(
-    # DATABASE=os.path.join(app.root_path, 'smanager.db'),
-    SECRET_KEY='development key',
-    # need more secure login method :)
-    USERNAME='admin',
-    PASSWORD='default'
 ))
 app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
 
