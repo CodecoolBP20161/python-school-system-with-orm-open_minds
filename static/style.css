@@ -1,0 +1,97 @@
+body            { font-family: sans-serif; background: #f3f3f3; }
+a, h1, h2       { color: #76323f; }
+h1, h2          { font-family: monospace; }
+h1              {
+                  padding: 0.5em;
+                  color: #d7cec7;
+                  background: #76323f;
+                }
+h2              { font-size: 1.2em; }
+
+table           { width: 100%; border-collapse: collapse; }
+th              {
+                  border: 1px solid #f0f0f0;
+                  color: #f0f0f0;
+                  font-family: monospace;
+                  background: #76323f;
+                }
+td              { border: 1px solid #76323f;
+                  background: #f0f0f0;
+                  font-size: 0.8em; }
+dt              { color: #76323f;  font-family: monospace;}
+
+textarea        { background: #f0f0f0; width: 90%; }
+input           { background: #f0f0f0; width: 90%; }
+select          {}
+
+.page           { margin: 2em auto;
+                  width: 70%;
+                  padding: 0.5em;
+                  background: #d7cec7; }
+
+.entries        { margin: 0; padding: 0; }
+.add-entry      { font-size: 0.9em; line-height: 150%; }
+.add-entry dl   { font-weight: bold; }
+
+.metanav        {
+                  text-align: right;
+                  font-size: 1em;
+                  margin-bottom: 1.5em;
+                  background: #c09f80;
+                  font-family: monospace;
+                }
+.flash          { background: #cee5F5; padding: 0.5em; margin-bottom: 1.5em;
+                  border: 1px solid #aacbe2; font-family: monospace;}
+.error          { background: #f0d6d6; padding: 0.5em; margin-bottom: 1.5em; font-family: monospace;}
+
+.numberinput    {
+                    width: 5em;
+                    -webkit-border-radius: 30px;
+                    -moz-border-radius: 30px;
+                    border-radius: 30px;
+                }
+
+.logininput     { width: 12em; }
+
+.headerbutton   { text-decoration: none; cursor: pointer; }
+
+.navbutton      {
+                    background-color: #c09f80;
+                    border: none;
+                    color: #fefefe;
+                    padding: 0.5em;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 1em;
+                    margin-left: 1em;
+                    cursor: pointer;
+                }
+.submitbutton   {
+                    background-color: #f0f0f0;
+                    border: none;
+                    color: #76323f;
+                    padding: 0.5em;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 1em;
+                    width: 12em;
+                    font-family: monospace;
+                    cursor: pointer;
+                }
+.editbutton     {
+                    background-color: #c09f80;
+                    border: none;
+                    color: #76323f;
+                    padding: 0em;
+                    vertical-align: middle;
+                    text-align: center;
+                    text-decoration: none;
+                    display: table-cell;
+                    font-size: 2em;
+                    font-weight: bold;
+                    padding: 0.1em;
+                    font-family: monospace;
+                    cursor: pointer;
+                }
