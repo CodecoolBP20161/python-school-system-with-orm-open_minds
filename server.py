@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from applicant_model import Applicant
+from model import Applicant
 
 app = Flask(__name__)
 
