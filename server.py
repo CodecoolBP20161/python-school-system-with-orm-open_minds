@@ -1,7 +1,16 @@
-import os
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from model import Applicant
+import os
+
 
 app = Flask(__name__)
+
+app.config.update(dict(
+   SECRET_KEY='development key',
+   USERNAME='admin',
+   PASSWORD='default'
+))
+app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
 
 
 app.config.update(dict(
@@ -46,15 +55,17 @@ def logout():
 # shows the signup form - writing data to database happens in an other function
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
-    data = [dict(request.form.items())]
-    print(data)
     return render_template('signup.html', title='Signup')
 
 
 @app.route('/add', methods=['POST'])
 def add_entry():
-        flash('your signup has been submitted!')
-        return redirect(url_for('signup'))
+    if request.method == 'POST':
+        data = [dict(request.form.items())]
+        print(data)
+        Applicant.add_applicants(data)
+    flash('your signup has been submitted!')
+    return redirect(url_for('signup'))
 
 
 # shows adminmenu (login required)
