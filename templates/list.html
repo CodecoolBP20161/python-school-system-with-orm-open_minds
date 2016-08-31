@@ -1,0 +1,38 @@
+{% extends "filtering.html" %}
+{% block list %}
+<p>
+    {% if session.logged_in %}
+    <p>
+        list ordered by {{ filter }}
+    </p>
+        <ul class=entries>
+            <table>
+                <tr>
+                    <th>application code</th>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>email</th>
+                    <th>year of birth</th>
+                    <th>gender</th>
+                    <th>city</th>
+                    <th>assigned school</th>
+                    <th>interview slot</th>
+                    <th>status</th>
+                </tr>
+                <tr>
+                    <td>application code</td>
+                    <td>first name</td>
+                    <td>last name</td>
+                    <td>email</td>
+                    <td>year of birth</td>
+                    <td>gender</th>
+                    <td>city</td>
+                    <td>assigned school</td>
+                    <td>interview slot</td>
+                    <td>status</td>
+                </tr>
+            </table>
+        </ul>
+    {% endif %}
+</p>
+{% endblock %}

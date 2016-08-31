@@ -1,0 +1,14 @@
+{% extends "adminmenu.html" %}
+{% block filtering %}
+<p>
+    filter by:
+    <a href="{{ url_for('show_data', filter='status') }}" class="navbutton">status</a>
+    <a href="{{ url_for('show_data', filter='time') }}" class="navbutton">time</a>
+    <a href="{{ url_for('show_data', filter='location') }}" class="navbutton">location</a>
+    <a href="{{ url_for('show_data', filter='last name') }}" class="navbutton">last name</a>
+    <a href="{{ url_for('show_data', filter='email') }}" class="navbutton">email</a>
+    <a href="{{ url_for('show_data', filter='school') }}" class="navbutton">school</a>
+    <a href="{{ url_for('show_data', filter='mentor name') }}" class="navbutton">mentor name</a>
+</p>
+{% block list %}{% endblock %}
+{% endblock %}

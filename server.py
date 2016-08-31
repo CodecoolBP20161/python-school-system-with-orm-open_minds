@@ -1,6 +1,17 @@
-from flask import Flask, render_template, redirect, request, url_for
+import os
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 
 app = Flask(__name__)
+
+
+app.config.update(dict(
+    # DATABASE=os.path.join(app.root_path, 'smanager.db'),
+    SECRET_KEY='development key',
+    # need more secure login method :)
+    USERNAME='admin',
+    PASSWORD='default'
+))
+app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
 
 
 @app.route('/')
@@ -20,7 +31,7 @@ def login():
         else:
             session['logged_in'] = True
             flash('You are logged in')
-            return redirect(url_for('list_entries'))
+            return redirect(url_for('show_adminmenu'))
     return render_template('login.html', error=error, title="Login")
 
 
@@ -40,11 +51,17 @@ def signup():
     return render_template('signup.html', title='Signup')
 
 
+@app.route('/add', methods=['POST'])
+def add_entry():
+        flash('your signup has been submitted!')
+        return redirect(url_for('signup'))
+
+
 # shows adminmenu (login required)
 @app.route('/adminmenu')
 def show_adminmenu():
     if session.get('logged_in'):
-        return render_template('adminmenu.html', title='Admin')
+        return render_template('adminmenu.html', title='Admin Menu')
     else:
         return redirect(url_for('login'))
 
@@ -53,7 +70,7 @@ def show_adminmenu():
 @app.route('/filtering')
 def show_filtering():
     if session.get('logged_in'):
-        return render_template('filtering.html', title='Filtering')
+        return render_template('filtering.html', title='Filters')
     else:
         return redirect(url_for('login'))
 
@@ -62,7 +79,7 @@ def show_filtering():
 @app.route('/filtering/<filter>')
 def show_data(filter):
     if session.get('logged_in'):
-        return render_template('list.html', title='filter')
+        return render_template('list.html', filter=filter, title='Filtered by ' + filter.title())
     else:
         return redirect(url_for('login'))
 

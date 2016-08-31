@@ -10,8 +10,16 @@
 <div class=page>
     <a href="{{ url_for('show_main_page') }}" class="headerbutton"><h1>School System by OpenMinds</h1></a>
     <div class=metanav>
+    <!-- home link -->
+    <a href="{{ url_for('show_main_page') }}" class="navbutton">home</a>
+    <!-- admin menu link -->
+    {% if session.logged_in %}
+    <a href="{{ url_for('show_adminmenu') }}" class="navbutton">admin</a>
+    {% endif %}
+    {% if not session.logged_in %}
     <!-- form link -->
     <a href="{{ url_for('signup') }}" class="navbutton">signup</a>
+    {% endif %}
     <!-- login link -->
     {% if not session.logged_in %}
     <a href="{{ url_for('login') }}" class="navbutton">log in</a>
@@ -24,4 +32,3 @@
     {% endfor %}
     {% block body %}{% endblock %}
 </div>
- 
