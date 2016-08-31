@@ -3,24 +3,25 @@
 
 
     <!-- add_entry function needed -->
-    <form action="" method=post class=add-entry>
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
       <dl>
         <dt>first name:
-            <dd><input type=text size=30 placeholder="first name" name=first_name>
+            <dd><input required type=text size=30 placeholder="first name" name=first_name>
         <dt>last name:
-            <dd><input type=text size=30 placeholder="last name" name=last_name>
+            <dd><input required type=text size=30 placeholder="last name" name=last_name>
         <dt>email:
-            <dd><input type=text size=30 placeholder="email" name=email>
+            <dd><input required type=text size=30 placeholder="email" name=email>
         <dt>year of birth:
-            <dd><input type="number" class="numberinput" placeholder=" year " name=year_of_birth min="1970" max="1998" step="01">
+            <dd><input required type="number" class="numberinput" placeholder=" year " name=year_of_birth min="1970" max="1998" step="01">
         <dt>gender:
-            <dd><select name="gender" class="statusinput">
+            <dd><select required name="gender" class="statusinput">
+                    <option value="" disabled selected>-- gender --</option>
                     <option value="female">female</option>
                     <option value="male">male</option>
                     <option value="other">other</option>
                 </select>
         <dt>city:
-            <dd><input type=text size=30  placeholder="city" name=city>
+            <dd><input required type=text size=30  placeholder="city" name=city>
         <dt><br><input type="submit" class="submitbutton" value="submit application">
       </dl>
     </form>

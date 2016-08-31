@@ -1,5 +1,7 @@
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from model import Applicant
+import os
+
 
 app = Flask(__name__)
 
@@ -7,6 +9,16 @@ app.config.update(dict(
    SECRET_KEY='development key',
    USERNAME='admin',
    PASSWORD='default'
+))
+app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
+
+
+app.config.update(dict(
+    # DATABASE=os.path.join(app.root_path, 'smanager.db'),
+    SECRET_KEY='development key',
+    # need more secure login method :)
+    USERNAME='admin',
+    PASSWORD='default'
 ))
 app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
 
@@ -28,7 +40,7 @@ def login():
         else:
             session['logged_in'] = True
             flash('You are logged in')
-            return redirect(url_for('list_entries'))
+            return redirect(url_for('show_adminmenu'))
     return render_template('login.html', error=error, title="Login")
 
 
@@ -60,7 +72,7 @@ def add_entry():
 @app.route('/adminmenu')
 def show_adminmenu():
     if session.get('logged_in'):
-        return render_template('adminmenu.html', title='Admin')
+        return render_template('adminmenu.html', title='Admin Menu')
     else:
         return redirect(url_for('login'))
 
@@ -69,7 +81,7 @@ def show_adminmenu():
 @app.route('/filtering')
 def show_filtering():
     if session.get('logged_in'):
-        return render_template('filtering.html', title='Filtering')
+        return render_template('filtering.html', title='Filters')
     else:
         return redirect(url_for('login'))
 
@@ -78,7 +90,7 @@ def show_filtering():
 @app.route('/filtering/<filter>')
 def show_data(filter):
     if session.get('logged_in'):
-        return render_template('list.html', title='filter')
+        return render_template('list.html', filter=filter, title='Filtered by ' + filter.title())
     else:
         return redirect(url_for('login'))
 

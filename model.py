@@ -1,7 +1,7 @@
 from peewee import *
 # from db_controller import psql_db
 
-psql_db = PostgresqlDatabase('codecool-palko')
+psql_db = PostgresqlDatabase('')
 
 
 class BaseModel(Model):
