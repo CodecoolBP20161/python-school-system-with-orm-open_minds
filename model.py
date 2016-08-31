@@ -1,19 +1,31 @@
 from peewee import *
-from server import app
-from flask_peewee.db import Database
+# from db_controller import psql_db
 
-db = Database(app)
+psql_db = PostgresqlDatabase('codecool-palko')
 
 
-class Applicant(db.Model):
-    """  Applicant table based on Applicant model. """
-    application_code = CharField(null=True)
+class BaseModel(Model):
+    class Meta:
+        database = psql_db
+
+
+class Applicant(BaseModel):
+    # application_code = CharField(null=True)
     first_name = CharField()
     last_name = CharField()
     email = CharField()
     year_of_birth = IntegerField()
     gender = CharField()
-    city = CharField()
-    assigned_school = ForeignKeyField(School, related_name='applicants', null=True)
-    interview_slot = ForeignKeyField(InterviewSlot, related_name='applicants', null=True)
-    status = CharField()
+    # city = CharField()
+    # status = CharField()
+
+    @staticmethod
+    def add_applicants(data):
+        for applicant in data:
+            Applicant.create(first_name=applicant['first_name'],
+                             last_name=applicant['last_name'],
+                             email=applicant['email'],
+                             year_of_birth=applicant['year_of_birth'],
+                             gender=applicant['gender'],
+                             city=applicant['city']
+                             )
