@@ -1,7 +1,7 @@
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask import Flask, request, session, redirect, url_for, render_template, flash
+from validate_email import validate_email
 from applicant_model import Applicant
 from mentor_model import Mentor
-from validate_email import validate_email
 
 app = Flask(__name__)
 
