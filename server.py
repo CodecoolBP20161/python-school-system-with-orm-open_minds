@@ -3,7 +3,10 @@ from applicant_model import Applicant
 from mentor_model import Mentor
 from validate_email import validate_email
 
+
 app = Flask(__name__)
+
+
 
 app.config.update(dict(
    SECRET_KEY='development key',
@@ -11,6 +14,7 @@ app.config.update(dict(
    PASSWORD='default'
 ))
 app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
+
 
 
 @app.route('/')
@@ -95,32 +99,45 @@ def handle_filters():
         if request.method == 'POST':
             data = dict(request.form.items())
             print(data)
-            if data['filtering'] == 'first_name':
-                for applicant in Applicant.select().where(Applicant.first_name.contains(data['search'])):
-                    print(applicant)
-            elif data['filtering'] == 'last_name':
-                for applicant in Applicant.select().where(Applicant.last_name.contains(data['search'])):
-                    print(applicant)
-            elif data['filtering'] == 'email':
-                for applicant in Applicant.select().where(Applicant.email.contains(data['search'])):
-                    print(applicant)
-            elif data['filtering'] == 'year_of_birth':
-                for applicant in Applicant.select().where(Applicant.year_of_birth == data['search']):
-                    print(applicant)
-            elif data['filtering'] == 'city':
-                for applicant in Applicant.select().where(Applicant.city == data['search']):
-                    print(applicant)
-            elif data['filtering'] == 'mentor_id':
-                for mentor in Mentor.select().where(Mentor.id == data['search']):
-                    for element in mentor.interviews:
-                        print(element.applicants.get())
-            elif data['filtering'] == 'school':
-                for applicant in Applicant.select().where(Applicant.assigned_school == data['search']):
-                    print(applicant)
-            elif data['filtering'] == 'status':
-                for applicant in Applicant.select().where(Applicant.status.contains(data['search'])):
-                    print(applicant)
-            return redirect(url_for('show_data', filter=data['filtering']))
+            try:
+                if data['filtering'] == 'name':
+                    for applicant in Applicant.select().where(Applicant.first_name.contains(data['search']) and Applicant.last_name.contains(data['search'])):
+                        print(applicant)
+
+
+                elif data['filtering'] == 'email':
+                    for applicant in Applicant.select().where(Applicant.email.contains(data['search'])):
+                        print(applicant)
+
+                elif data['filtering'] == 'year_of_birth':
+                    for applicant in Applicant.select().where(Applicant.year_of_birth == data['search']):
+                        print(applicant)
+
+
+                elif data['filtering'] == 'city':
+                    for applicant in Applicant.select().where(Applicant.city == data['search']):
+                        print(applicant)
+
+                elif data['filtering'] == 'mentor_id':
+                    for mentor in Mentor.select().where(Mentor.id == data['search']):
+                        for element in mentor.interviews:
+                            print(element.applicants.get())
+
+                elif data['filtering'] == 'school':
+                    for applicant in Applicant.select().where(Applicant.assigned_school == data['search']):
+                        print(applicant)
+
+
+                elif data['filtering'] == 'status':
+                    for applicant in Applicant.select().where(Applicant.status.contains(data['search'])):
+                        print(applicant)
+
+
+                return redirect(url_for('show_data', filter=data['filtering']))
+
+            except ValueError as error:
+                return redirect(url_for('show_filtering'))
+
     else:
         return redirect(url_for('login'))
 
