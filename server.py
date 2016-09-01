@@ -88,6 +88,18 @@ def show_filtering():
         return redirect(url_for('login'))
 
 
+@app.route('/filtering/apply', methods=['POST'])
+def handle_filters():
+    if session.get('logged_in'):
+        if request.method == 'POST':
+            data = dict(request.form.items())
+            flash(data)
+            #  imported function for querying
+            return redirect(url_for('show_data', filter=data['filtering']))
+    else:
+        return redirect(url_for('login'))
+
+
 # shows data according to the selected filter
 @app.route('/filtering/<filter>')
 def show_data(filter):
