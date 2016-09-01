@@ -55,6 +55,9 @@ def add_entry():
         data[0]['assigned_school'] = None
         Applicant.applicants = data
         Applicant.add_applicants()
+        Applicant.finding_city()
+        Applicant.set_app_code()
+        Applicant.assign_interview_slot()
     flash('your signup has been submitted!')
     return redirect(url_for('signup'))
 
