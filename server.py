@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from model import Applicant
+from applicant_model import Applicant
 
 app = Flask(__name__)
 
@@ -50,8 +50,11 @@ def signup():
 def add_entry():
     if request.method == 'POST':
         data = [dict(request.form.items())]
-        print(data)
-        Applicant.add_applicants(data)
+        data[0]['application_code'] = None
+        data[0]['status'] = 'new'
+        data[0]['assigned_school'] = None
+        Applicant.applicants = data
+        Applicant.add_applicants()
     flash('your signup has been submitted!')
     return redirect(url_for('signup'))
 
