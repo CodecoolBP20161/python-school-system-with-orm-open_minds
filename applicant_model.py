@@ -12,6 +12,7 @@ class Applicant(BaseModel):
     application_code = CharField(null=True)
     first_name = CharField()
     last_name = CharField()
+    email = CharField()
     year_of_birth = IntegerField()
     gender = CharField()
     city = CharField()
@@ -23,6 +24,7 @@ class Applicant(BaseModel):
         {'application_code': 'thc420',
          'first_name': 'Bob',
          'last_name': 'Marley',
+         'email': "420everyday@blazeit.com",
          'year_of_birth': 1966,
          'gender': 'male',
          'city': 'Jamaica',
@@ -32,6 +34,7 @@ class Applicant(BaseModel):
         {'application_code': 'dev666',
          'first_name': 'Devil',
          'last_name': 'Lawyer',
+         'email': "itsgettinghothere@hell.com",
          'year_of_birth': 1966,
          'gender': 'male',
          'city': 'Hell',
@@ -41,6 +44,7 @@ class Applicant(BaseModel):
         {'application_code': 'nir333',
          'first_name': 'Curt',
          'last_name': 'Cobain',
+         'email': "penny@royal.tea",
          'year_of_birth': 1967,
          'gender': 'male',
          'city': 'Rome',
@@ -50,6 +54,7 @@ class Applicant(BaseModel):
         {'application_code': None,
          'first_name': 'Pam',
          'last_name': 'Pam',
+         'email': "szeretem@acsokit.com",
          'year_of_birth': 1993,
          'gender': 'notsure',
          'city': 'Győr',
@@ -59,6 +64,7 @@ class Applicant(BaseModel):
         {'application_code': None,
          'first_name': 'Frodo',
          'last_name': 'Baggins',
+         'email': "gottogo@tothevolcano.com",
          'year_of_birth': 2000,
          'gender': 'male',
          'city': 'Debrecen',
@@ -68,6 +74,7 @@ class Applicant(BaseModel):
         {'application_code': None,
          'first_name': 'Elvis',
          'last_name': 'Presley',
+         'email': "ohlook@myhair.com",
          'year_of_birth': 1935,
          'gender': 'male',
          'city': 'Barcelona',
@@ -77,6 +84,7 @@ class Applicant(BaseModel):
         {'application_code': None,
          'first_name': 'Andreste',
          'last_name': 'Éimhear',
+         'email': "boudicca@rules.com",
          'year_of_birth': 1909,
          'gender': 'female',
          'city': 'Budapest',
@@ -86,6 +94,7 @@ class Applicant(BaseModel):
         {'application_code': None,
          'first_name': 'Jean',
          'last_name': 'D\'Arc',
+         'email': "feminism@isnotdead.com",
          'year_of_birth': 1412,
          'gender': 'female',
          'city': 'Paris',
@@ -95,6 +104,7 @@ class Applicant(BaseModel):
         {'application_code': None,
          'first_name': 'Krystyna',
          'last_name': 'Rudaski',
+         'email': "krystyna.rudaski@gmail.com",
          'year_of_birth': 1980,
          'gender': 'female',
          'city': 'Krakow',
@@ -116,6 +126,7 @@ class Applicant(BaseModel):
             Applicant.create(application_code=applicant['application_code'],
                              first_name=applicant['first_name'],
                              last_name=applicant['last_name'],
+                             email=applicant['email'],
                              year_of_birth=applicant['year_of_birth'],
                              gender=applicant['gender'],
                              city=applicant['city'],
@@ -155,7 +166,7 @@ class Applicant(BaseModel):
             applicant.application_code = Applicant.app_code_gen()
             applicant.status = 'in progress'
             applicant.save()
-        cls.find_handled_applications()
+        # cls.find_handled_applications()
 
     @classmethod
     def find_empty_interview_slot(cls):
@@ -166,7 +177,7 @@ class Applicant(BaseModel):
         applicants = cls.find_empty_interview_slot()
         for applicant in applicants:
             applicant.set_interview_slot()
-        cls.find_applicant_interviews()
+        # cls.find_applicant_interviews()
 
     def set_interview_slot(self):
         query = (InterviewSlot.select(InterviewSlot, Mentor)
