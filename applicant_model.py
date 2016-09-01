@@ -155,7 +155,7 @@ class Applicant(BaseModel):
             applicant.application_code = Applicant.app_code_gen()
             applicant.status = 'in progress'
             applicant.save()
-        cls.find_handled_applications()
+        # cls.find_handled_applications()
 
     @classmethod
     def find_empty_interview_slot(cls):
@@ -166,7 +166,7 @@ class Applicant(BaseModel):
         applicants = cls.find_empty_interview_slot()
         for applicant in applicants:
             applicant.set_interview_slot()
-        cls.find_applicant_interviews()
+        # cls.find_applicant_interviews()
 
     def set_interview_slot(self):
         query = (InterviewSlot.select(InterviewSlot, Mentor)
