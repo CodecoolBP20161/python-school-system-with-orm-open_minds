@@ -1,12 +1,17 @@
 from peewee import *
-from model import Applicant, psql_db
 
+db_name = ""
+
+psql_db = PostgresqlDatabase(db_name)
 psql_db.connect()
 
-try:
-    psql_db.create_table(Applicant)
-    print("Table created.")
-    # If the table is exist, don't try create again.
-except ProgrammingError:
-    print("Table already exist.")
-    pass
+
+def create_table():
+    from city_model import City
+    from school_model import School
+    from mentor_model import Mentor
+    from applicant_model import Applicant
+    from interviewslot_model import InterviewSlot
+
+    psql_db.drop_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
+    psql_db.create_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
