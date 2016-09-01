@@ -1,5 +1,6 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from applicant_model import Applicant
+from validate_email import validate_email
 
 app = Flask(__name__)
 
@@ -50,15 +51,22 @@ def signup():
 def add_entry():
     if request.method == 'POST':
         data = [dict(request.form.items())]
-        data[0]['application_code'] = None
-        data[0]['status'] = 'new'
-        data[0]['assigned_school'] = None
-        Applicant.applicants = data
-        Applicant.add_applicants()
-        Applicant.finding_city()
-        Applicant.set_app_code()
-        Applicant.assign_interview_slot()
-    flash('your signup has been submitted!')
+        if data[0]['first_name'].isalpha() is False:
+            flash("Invalid first name!")
+        elif data[0]['last_name'].isalpha() is False:
+            flash("Invalid last name!")
+        elif validate_email(data[0]['email']) is False:
+            flash("Invalid email!")
+        else:
+            data[0]['application_code'] = None
+            data[0]['status'] = 'new'
+            data[0]['assigned_school'] = None
+            Applicant.applicants = data
+            Applicant.add_applicants()
+            Applicant.finding_city()
+            Applicant.set_app_code()
+            Applicant.assign_interview_slot()
+            flash('Your signup has been submitted!')
     return redirect(url_for('signup'))
 
 
