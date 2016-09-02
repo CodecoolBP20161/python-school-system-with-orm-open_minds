@@ -174,6 +174,7 @@ class Applicant(BaseModel):
 
     @classmethod
     def assign_interview_slot(cls):
+
         applicants = cls.find_empty_interview_slot()
         for applicant in applicants:
             applicant.set_interview_slot()
@@ -189,8 +190,11 @@ class Applicant(BaseModel):
             self.interview_slot = slot
             self.save()
         except IndexError:
+            from flask import flash
             if self.status == 'in progress':
-                print('No more free interview slots for {}'.format(self.application_code.upper()))
+                msg = 'No more free interview slots for {}'.format(self.application_code.upper())
+                print(msg)
+                flash(msg)
             else:
                 pass
 

@@ -1,10 +1,12 @@
-from build import *
+from db_controller import create_table
+from school_model import School
+from city_model import City
 from main_menu import *
 
 
 # The InterviewSlot isn't fill with data.
 # The database created, but when you run the menu the function called wrong path.
-build()
+create_table()
 print("Empty tables created :)")
 input("[Press Enter]\n")
 School.add_schools()

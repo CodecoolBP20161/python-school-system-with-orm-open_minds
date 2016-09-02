@@ -1,15 +1,8 @@
 from peewee import *
-
-""" The tables are based on these models. """
-
-
-db_name = input("Give me your database name: ")
-user_name = input("Give me your user name: ")
-
-db = PostgresqlDatabase(db_name, user=user_name)
+from db_controller import psql_db
 
 
 class BaseModel(Model):
     """ A base model that will use our Postgresql database. """
     class Meta:
-        database = db
+        database = psql_db
