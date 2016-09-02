@@ -46,7 +46,7 @@ def filter_db_querry(data):
 
     if data['filtering'] == 'name':
         for applicant in Applicant.select().where(
-                        Applicant.first_name.contains(data['search']) and Applicant.last_name.contains(
+                        Applicant.first_name.contains(data['search']) or Applicant.last_name.contains(
                         data['search'])):
             print(applicant)
     elif data['filtering'] == 'email':
