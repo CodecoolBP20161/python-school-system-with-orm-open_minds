@@ -90,23 +90,23 @@ def handle_filters():
     if session.get('logged_in'):
         if request.method == 'POST':
             data = dict(request.form.items())
-            print(data)
+            # print(data)
             try:
-                filter_db_querry(data)
-                return redirect(url_for('show_data', filter=data['filtering']))
+                applicant_list = filter_db_querry(data)
+                return render_template("list.html", applicant_list=applicant_list)
             except ValueError as error:
                 return redirect(url_for('show_filtering'))
     else:
         return redirect(url_for('login'))
 
-
-# shows data according to the selected filter
-@app.route('/filtering/<filter>')
-def show_data(filter):
-    if session.get('logged_in'):
-        return render_template('list.html', filter=filter, title='Filtered by ' + filter.title())
-    else:
-        return redirect(url_for('login'))
+#
+# # shows data according to the selected filter
+# @app.route('/filtering/<filter>')
+# def show_data(filter):
+#     if session.get('logged_in'):
+#         return render_template('list.html', filter=filter, title='Filtered by ' + filter.title())
+#     else:
+#         return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
