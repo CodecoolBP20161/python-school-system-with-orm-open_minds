@@ -1,10 +1,10 @@
 {% extends "adminmenu.html" %}
 {% block filtering %}
 
-<form action="{{ url_for('handle_filters') }}" method=post class=add-entry>
+<form action="{{ url_for('handle_filters') }}" method=post >
   <dl>
     <dt>filter by:
-        <dd><select required name="filtering" class="statusinput">
+        <dd><select required name="filtering" >
                 <option value="" disabled selected>-- filter by --</option>
                 <option value="name">name</option>
                 <option value="email">email</option>
@@ -16,7 +16,7 @@
             </select>
     <dt>search:
         <dd><input required type=text size=30 placeholder="search" name=search>
-    <dt><br><input type="submit" class="submitbutton" value="filter">
+    <dt><br><input type="submit"  value="filter">
   </dl>
 </form>
 

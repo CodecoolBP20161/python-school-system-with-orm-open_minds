@@ -1,34 +1,50 @@
 <!doctype html>
-<title>
-    {% if title %}
-    {{ title }} | School System by OpenMinds
-    {% else %}
-    School System by OpenMinds
-    {% endif %}
-</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-    <a href="{{ url_for('show_main_page') }}" class="headerbutton"><h1>School System by OpenMinds</h1></a>
-    <div class=metanav>
-    <!-- home link -->
-    <a href="{{ url_for('show_main_page') }}" class="navbutton">home</a>
-    <!-- admin menu link -->
-    {% if session.logged_in %}
-    <a href="{{ url_for('show_adminmenu') }}" class="navbutton">admin</a>
-    {% endif %}
-    {% if not session.logged_in %}
-    <!-- form link -->
-    <a href="{{ url_for('signup') }}" class="navbutton">signup</a>
-    {% endif %}
-    <!-- login link -->
-    {% if not session.logged_in %}
-    <a href="{{ url_for('login') }}" class="navbutton">log in</a>
-    {% else %}
-    <a href="{{ url_for('logout') }} "class="navbutton">log out</a>
-    {% endif %}
-    </div>
-    {% for message in get_flashed_messages() %}
-    <div class=flash>{{ message }}</div>
-    {% endfor %}
-    {% block body %}{% endblock %}
-</div>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+        <title>
+            {% if title %}
+            {{ title }} | School System by OpenMinds
+            {% else %}
+            School System by OpenMinds
+            {% endif %}
+        </title>
+
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
+
+    </head>
+
+    <body>
+        <div >
+            <a href="{{ url_for('show_main_page') }}" ><h1>School System by OpenMinds</h1></a>
+            <div >
+            <!-- home link -->
+            <a href="{{ url_for('show_main_page') }}" >home</a>
+            <!-- admin menu link -->
+            {% if session.logged_in %}
+            <a href="{{ url_for('show_adminmenu') }}" >admin</a>
+            {% endif %}
+            {% if not session.logged_in %}
+            <!-- form link -->
+            <a href="{{ url_for('signup') }}" >signup</a>
+            {% endif %}
+            <!-- login link -->
+            {% if not session.logged_in %}
+            <a href="{{ url_for('login') }}" >log in</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}" >log out</a>
+            {% endif %}
+            </div>
+            {% for message in get_flashed_messages() %}
+            <!-- important, don't delete class! -->
+            <div class=flash>{{ message }}</div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>
