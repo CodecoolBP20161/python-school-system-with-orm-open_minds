@@ -7171,3 +7171,20 @@ a.list-group-item-danger.active:focus {
 .popover {
   color: #555555;
 }
+
+.loginbtn {
+    margin-top: 8px;
+}
+
+.loginbtn:hover {
+    margin-top: 8px;
+}
+
+body {
+  background: url(img/bg.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: left bottom
+}
