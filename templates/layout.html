@@ -14,6 +14,7 @@
             School System by OpenMinds
             {% endif %}
         </title>
+        <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -41,13 +42,14 @@
                    {% if session.logged_in %}
                        <li class="active"><a href="{{ url_for('show_adminmenu')}}"> Admin Menu <span class="sr-only">(current)</span></a></li>
                    {% endif %}
+
               </ul>
             </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <li>
                 {% if not session.logged_in %}
-                <a href="{{ url_for('login') }}">log in</a>
+                <a href="{{ url_for('login') }}">Login</a>
                 {% else %}
                 <a href="{{ url_for('logout') }}" >log out</a>
                 {% endif %}
@@ -55,7 +57,7 @@
             </li>
                 {% if not session.logged_in %}
                 <!-- form link -->
-                <a class="btn btn-primary loginbtn" role="button" data-toggle="modal" data-target="#signupModal">Sign up</a>
+                <a class="btn btn-primary loginbtn" role="button" data-toggle="modal" data-target="#signup-modal">Sign up</a>
                 {% endif %}
             </ul>
         </div>
@@ -66,12 +68,14 @@
 <div class=flash>{{ message }}
 </div>
 {% endfor %}
-{% block signup %} {% endblock %}
-<div id="signupModal" class="modal fade" role="dialog">
+{% include 'signup.html' %}
+{% block body %}{% endblock %}
+
+<!-- <div id="signup-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
       <div class="modal-content">
-    <div class="modal-header">
+        <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h4 class="modal-title">Sign up</h4>
     </div>
@@ -151,7 +155,8 @@
   </div>
 
 </div>
-</div>
+</div> -->
+
 <footer class="footer">
   <div class="container">
     <p class="text">© 2016 OpenMinds. All rights reserved.</p>
@@ -159,4 +164,3 @@
 </footer>
 
 </body>
-{% block body %}{% endblock %}
