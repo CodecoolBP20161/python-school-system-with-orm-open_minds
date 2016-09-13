@@ -1,34 +1,5 @@
-from peewee import *
-
-
-def init_db():
-    try:
-        with open('db.nfo') as f:
-           db_name = f.read()
-    except FileNotFoundError:
-        with open('db.nfo', 'w') as f:
-            db_name = f.write(input("What's name your database?\n"))
-            # print(db_name)
-    # return print(db_name)
-    return db_name
-init_db()
-psql_db = PostgresqlDatabase(init_db())
-psql_db.connect()
-
-
-def create_table():
-    from city_model import City
-    from school_model import School
-    from mentor_model import Mentor
-    from applicant_model import Applicant
-    from interviewslot_model import InterviewSlot
-
-    psql_db.drop_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
-    psql_db.create_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
-
-
-def signup_db_query(data):
-    from applicant_model import Applicant
+def applicant_signup(data):
+    from model_applicant import Applicant
 
     data[0]['application_code'] = None
     data[0]['status'] = 'new'
@@ -40,9 +11,9 @@ def signup_db_query(data):
     Applicant.assign_interview_slot()
 
 
-def filter_db_query(data):
-    from applicant_model import Applicant
-    from mentor_model import Mentor
+def admin_filter(data):
+    from model_applicant import Applicant
+    from model_mentor import Mentor
     result = []
     try:
         if data['search'] == '':

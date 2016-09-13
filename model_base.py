@@ -1,5 +1,5 @@
 from peewee import *
-from db_controller import psql_db
+from db_init import psql_db
 
 
 class BaseModel(Model):

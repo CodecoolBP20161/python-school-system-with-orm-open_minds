@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from applicant_model import Applicant
+from model_applicant import Applicant
 from interviewslot_model import InterviewSlot
 import os
 
