@@ -7188,3 +7188,22 @@ body {
   background-size: cover;
   background-position: left bottom
 }
+
+html {
+ position: fixed;
+ min-height: 100%;
+}
+body {
+ /* Margin bottom by footer height */
+ margin-bottom: 60px;
+}
+.footer {
+ position: fixed;
+ bottom: 0;
+ width: 100%;
+ /* Set the fixed height of the footer here */
+ height: 20px;
+ background-color: gray;
+ opacity: 0.5;
+ color: white;
+}
