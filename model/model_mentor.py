@@ -1,5 +1,6 @@
-from model_base import *
-from model_school import School
+from model.model_base import *
+from model.model_school import School
+
 
 class Mentor(BaseModel):
     """  Mentor table based on Mentor model. """

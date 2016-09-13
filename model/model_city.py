@@ -1,5 +1,5 @@
-from model_base import *
-from model_school import School
+from model.model_base import *
+from model.model_school import School
 
 
 class City(BaseModel):

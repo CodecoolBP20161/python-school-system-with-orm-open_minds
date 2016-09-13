@@ -12,11 +12,11 @@ def init_db():
 
 
 def create_table():
-    from model_city import City
-    from model_school import School
-    from model_mentor import Mentor
-    from model_applicant import Applicant
-    from interviewslot_model import InterviewSlot
+    from model.model_city import City
+    from model.model_school import School
+    from model.model_mentor import Mentor
+    from model.model_applicant import Applicant
+    from model.model_interviewslot import InterviewSlot
 
     psql_db.drop_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
     psql_db.create_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)

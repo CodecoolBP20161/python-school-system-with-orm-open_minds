@@ -1,6 +1,6 @@
 from peewee import *
-from model_base import BaseModel
-from model_mentor import Mentor
+from model.model_mentor import Mentor
+from model.model_base import BaseModel
 
 
 class InterviewSlot(BaseModel):

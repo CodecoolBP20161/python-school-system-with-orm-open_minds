@@ -1,10 +1,11 @@
-from model_base import *
-from model_school import School
-from model_city import City
-from interviewslot_model import InterviewSlot
-from model_mentor import Mentor
-from class_email import Email
 import uuid
+
+from class_email import Email
+from model.model_base import *
+from model.model_city import City
+from model.model_mentor import Mentor
+from model.model_school import School
+from model.model_interviewslot import InterviewSlot
 
 
 class Applicant(BaseModel):
