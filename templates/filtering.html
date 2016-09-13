@@ -4,7 +4,7 @@
 <form action="{{ url_for('handle_filters') }}" method=post class=add-entry>
   <dl>
     <dt>filter by:
-        <dd><select required name="filtering" class="statusinput">
+        <dd><select name="filtering" class="statusinput">
                 <option value="" disabled selected>-- filter by --</option>
                 <option value="name">name</option>
                 <option value="email">email</option>
@@ -15,7 +15,7 @@
                 <option value="status">status</option>
             </select>
     <dt>search:
-        <dd><input required type=text size=30 placeholder="search" name=search>
+        <dd><input type=text size=30 placeholder="search" name=search>
     <dt><br><input type="submit" class="submitbutton" value="filter">
   </dl>
 </form>
