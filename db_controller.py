@@ -8,8 +8,6 @@ def init_db():
     except FileNotFoundError:
         with open('db.nfo', 'w') as f:
             db_name = f.write(input("What's name your database?\n"))
-            # print(db_name)
-    # return print(db_name)
     return db_name
 init_db()
 psql_db = PostgresqlDatabase(init_db())
