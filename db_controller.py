@@ -27,7 +27,7 @@ def create_table():
     psql_db.create_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
 
 
-def signup_db_querry(data):
+def signup_db_query(data):
     from applicant_model import Applicant
 
     data[0]['application_code'] = None
@@ -40,34 +40,41 @@ def signup_db_querry(data):
     Applicant.assign_interview_slot()
 
 
-def filter_db_querry(data):
+def filter_db_query(data):
     from applicant_model import Applicant
     from mentor_model import Mentor
-
     result = []
-
-    if data['filtering'] == 'name':
-        for applicant in Applicant.select().where(
-                        Applicant.first_name.contains(data['search']) or Applicant.last_name.contains(
-                        data['search'])):
-                        result.append(applicant)
-    elif data['filtering'] == 'email':
-        for applicant in Applicant.select().where(Applicant.email.contains(data['search'])):
-            result.append(applicant)
-    elif data['filtering'] == 'year_of_birth':
-        for applicant in Applicant.select().where(Applicant.year_of_birth == data['search']):
-            result.append(applicant)
-    elif data['filtering'] == 'city':
-        for applicant in Applicant.select().where(Applicant.city == data['search']):
-            result.append(applicant)
-    elif data['filtering'] == 'mentor_id':
-        for mentor in Mentor.select().where(Mentor.id == data['search']):
-            for element in mentor.interviews:
-                result.append(element.applicants.get())
-    elif data['filtering'] == 'school':
-        for applicant in Applicant.select().where(Applicant.assigned_school == data['search']):
-            result.append(applicant)
-    elif data['filtering'] == 'status':
-        for applicant in Applicant.select().where(Applicant.status.contains(data['search'])):
-            result.append(applicant)
-    return result
+    try:
+        if data['search'] == '':
+            for applicant in Applicant.select():
+                result.append(applicant)
+            return result
+        else:
+            if data['filtering'] == 'name':
+                for applicant in Applicant.select().where(
+                                Applicant.first_name.contains(data['search']) or Applicant.last_name.contains(
+                                data['search'])):
+                                result.append(applicant)
+            elif data['filtering'] == 'email':
+                for applicant in Applicant.select().where(Applicant.email.contains(data['search'])):
+                    result.append(applicant)
+            elif data['filtering'] == 'year_of_birth':
+                for applicant in Applicant.select().where(Applicant.year_of_birth == data['search']):
+                    result.append(applicant)
+            elif data['filtering'] == 'city':
+                for applicant in Applicant.select().where(Applicant.city == data['search']):
+                    result.append(applicant)
+            elif data['filtering'] == 'mentor_id':
+                for mentor in Mentor.select().where(Mentor.id == data['search']):
+                    for element in mentor.interviews:
+                        result.append(element.applicants.get())
+            elif data['filtering'] == 'school':
+                for applicant in Applicant.select().where(Applicant.assigned_school == data['search']):
+                    result.append(applicant)
+            elif data['filtering'] == 'status':
+                for applicant in Applicant.select().where(Applicant.status.contains(data['search'])):
+                    result.append(applicant)
+            return result
+    except KeyError:
+        # If the user don't choose filter, but the keyword is given.
+        return
