@@ -1,7 +1,7 @@
-from collections import OrderedDict
-from applicant_model import Applicant
-from interviewslot_model import InterviewSlot
 import os
+from collections import OrderedDict
+from model.model_applicant import Applicant
+from model.model_interviewslot import InterviewSlot
 
 
 # Clears the terminal window

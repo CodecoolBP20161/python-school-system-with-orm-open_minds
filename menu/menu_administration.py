@@ -1,7 +1,7 @@
-from collections import OrderedDict
-from applicant_model import Applicant
-from mentor_model import Mentor
 import os
+from collections import OrderedDict
+from model.model_mentor import Mentor
+from model.model_applicant import Applicant
 
 
 # This clears the terminal window

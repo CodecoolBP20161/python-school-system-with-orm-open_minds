@@ -1,8 +1,7 @@
-from db_controller import create_table
-from school_model import School
-from city_model import City
-from main_menu import *
-
+from menu.menu_main import *
+from db_init import create_table
+from model.model_city import City
+from model.model_school import School
 
 # The InterviewSlot isn't fill with data.
 # The database created, but when you run the menu the function called wrong path.
