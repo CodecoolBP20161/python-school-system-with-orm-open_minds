@@ -12,7 +12,7 @@ def init_db():
 
 
 def create_table():
-    from model_cityl import City
+    from model_city import City
     from model_school import School
     from model_mentor import Mentor
     from model_applicant import Applicant

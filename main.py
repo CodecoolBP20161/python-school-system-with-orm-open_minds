@@ -1,6 +1,6 @@
 from db_init import create_table
 from model_school import School
-from model_cityl import City
+from model_city import City
 from main_menu import *
 
 
