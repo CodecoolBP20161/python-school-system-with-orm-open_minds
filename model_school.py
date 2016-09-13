@@ -1,4 +1,4 @@
-from model import *
+from model_base import *
 
 
 class School(BaseModel):

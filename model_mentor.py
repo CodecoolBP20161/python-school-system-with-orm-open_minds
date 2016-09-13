@@ -1,4 +1,4 @@
-from model import *
+from model_base import *
 from model_school import School
 
 class Mentor(BaseModel):

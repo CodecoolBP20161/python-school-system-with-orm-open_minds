@@ -1,5 +1,5 @@
 from peewee import *
-from model import BaseModel
+from model_base import BaseModel
 from model_mentor import Mentor
 
 
