@@ -1,6 +1,6 @@
 from collections import OrderedDict
-from applicant_model import Applicant
-from mentor_model import Mentor
+from model_applicant import Applicant
+from model_mentor import Mentor
 import os
 
 

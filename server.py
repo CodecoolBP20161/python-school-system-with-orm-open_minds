@@ -1,6 +1,6 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
 from validate_email import validate_email
-from db_controller import signup_db_query, filter_db_query
+from controller_applicant import applicant_signup, admin_filter
 
 
 app = Flask(__name__)
@@ -60,7 +60,7 @@ def add_entry():
         elif validate_email(data[0]['email']) is False:
             flash("Invalid email!")
         else:
-            signup_db_query(data)
+            applicant_signup(data)
             flash('Your signup has been submitted!')
     return redirect(url_for('signup'))
 
@@ -88,10 +88,8 @@ def handle_filters():
     if session.get('logged_in'):
         if request.method == 'POST':
             data = dict(request.form.items())
-            print(data)
             try:
-                applicant_list = filter_db_query(data)
-                print(applicant_list)
+                applicant_list = admin_filter(data)
                 if applicant_list is None:
                     flash("Please choose a filter!")
                     return redirect(url_for('show_filtering'))

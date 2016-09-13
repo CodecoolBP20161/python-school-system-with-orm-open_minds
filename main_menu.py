@@ -1,5 +1,5 @@
-from application_menu import *
-from administration_menu import *
+from menu_application import *
+from menu_administration import *
 
 # This is the main loop, which handles the sub menu choices.
 

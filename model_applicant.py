@@ -1,9 +1,9 @@
-from basemodel import *
-from school_model import School
-from city_model import City
+from model_base import *
+from model_school import School
+from model_cityl import City
 from interviewslot_model import InterviewSlot
-from mentor_model import Mentor
-from email_class import Email
+from model_mentor import Mentor
+from class_email import Email
 import uuid
 
 
