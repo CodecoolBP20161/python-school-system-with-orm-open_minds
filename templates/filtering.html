@@ -1,14 +1,18 @@
-{% extends "adminmenu.html" %}
-{% block filtering %}
+{% extends "layout.html" %}
+{% block body %}
 
 <form action="{{ url_for('handle_filters') }}" method=post class="form-horizontal">
     <fieldset>
-        <legend>Filter User Data</legend>
+        <!-- <legend class="col-lg-2">Filter Applicant Data</legend> -->
         <div class="form-group">
             <!-- select filters -->
-            <label for="select" class="col-lg-2 control-label">Search:</label>
+            <label for="select" class="col-lg-2 control-label">filter applicant data:</label>
             <div class="col-lg-2">
-                <select name="filtering" class="form-control" id="select" >
+                <select name="filtering"
+                        class="form-control"
+                        id="select"
+                        data-toggle="tooltip" title="select a filter!"
+                >
                     <option value="" disabled selected>-- select filter --</option>
                     <option value="name">name</option>
                     <option value="email">email</option>
@@ -22,17 +26,24 @@
             <!-- enter keyword -->
             <!-- <label for="inputDefault" class="col-lg-1 control-label">Keyword:</label> -->
             <div class="col-lg-2">
-                <input type="text" class="form-control" id="inputDefault" placeholder="keyword" name=search>
+                <input type="text"
+                       class="form-control"
+                       id="inputDefault"
+                       placeholder="keyword"
+                       data-toggle="tooltip" title="enter a keyword!"
+                       name=search
+                >
             </div>
             <!-- search button -->
             <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit" value="filter">search</button>
+                <button class="btn btn-primary"
+                        type="submit"
+                        value="filter"
+                        data-toggle="tooltip" title="search"
+                >search</button>
             </span>
         </div>
 
-        <div class="form-group">
-
-        </div>
     </fieldset>
 </form>
 

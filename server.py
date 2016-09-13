@@ -31,7 +31,7 @@ def login():
         else:
             session['logged_in'] = True
             flash('You are logged in')
-            return redirect(url_for('show_adminmenu'))
+            return redirect(url_for('show_filtering'))
     return render_template('login.html', error=error, title="Login")
 
 
@@ -66,12 +66,12 @@ def add_entry():
 
 
 # shows adminmenu (login required)
-@app.route('/adminmenu')
-def show_adminmenu():
-    if session.get('logged_in'):
-        return render_template('adminmenu.html', title='Admin Menu')
-    else:
-        return redirect(url_for('login'))
+# @app.route('/adminmenu')
+# def show_adminmenu():
+#     if session.get('logged_in'):
+#         return render_template('adminmenu.html', title='Admin Menu')
+#     else:
+#         return redirect(url_for('login'))
 
 
 # shows the filtering menu (login required), filtering uses html form(s)
