@@ -1,4 +1,4 @@
-from menu_main import *
+from menu.menu_main import *
 from db_init import create_table
 from model.model_city import City
 from model.model_school import School
