@@ -17,10 +17,10 @@ psql_db.connect()
 
 
 def create_table():
-    from city_model import City
-    from school_model import School
-    from mentor_model import Mentor
-    from applicant_model import Applicant
+    from model_cityl import City
+    from model_school import School
+    from model_mentor import Mentor
+    from model_applicant import Applicant
     from interviewslot_model import InterviewSlot
 
     psql_db.drop_tables([School, City, Mentor, Applicant, InterviewSlot], safe=True)
@@ -28,7 +28,7 @@ def create_table():
 
 
 def signup_db_query(data):
-    from applicant_model import Applicant
+    from model_applicant import Applicant
 
     data[0]['application_code'] = None
     data[0]['status'] = 'new'
@@ -41,8 +41,8 @@ def signup_db_query(data):
 
 
 def filter_db_query(data):
-    from applicant_model import Applicant
-    from mentor_model import Mentor
+    from model_applicant import Applicant
+    from model_mentor import Mentor
     result = []
     try:
         if data['search'] == '':
