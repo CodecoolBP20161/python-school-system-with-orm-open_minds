@@ -17,23 +17,20 @@
                    <th>assigned school</th>
                    <th>status</th>
                </tr>
-
                {% for applicant in applicant_list %}
-
                <tr>
                    <td>{{ applicant.application_code }}</td>
                    <td>{{ applicant.first_name }}</td>
                    <td>{{ applicant.last_name }}</td>
                    <td>{{ applicant.email }}</td>
                    <td>{{ applicant.year_of_birth }}</td>
-                   <td>{{ applicant.gender }}</th>
+                   <td>{{ applicant.gender }}</td>
                    <td>{{ applicant.city }}</td>
                    <td>{{ applicant.assigned_school.name }}</td>
                    <td>{{ applicant.status }}</td>
-                </tr>
+               </tr>
 
-                {% endfor %}
-
+               {% endfor %}
            </table>
     </ul>
 

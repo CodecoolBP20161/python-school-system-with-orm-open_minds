@@ -1,10 +1,9 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
 from validate_email import validate_email
-from db_controller import signup_db_querry, filter_db_querry
+from db_controller import signup_db_query, filter_db_query
 
 
 app = Flask(__name__)
-
 
 
 app.config.update(dict(
@@ -13,7 +12,6 @@ app.config.update(dict(
    PASSWORD='default'
 ))
 app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
-
 
 
 @app.route('/')
@@ -62,7 +60,7 @@ def add_entry():
         elif validate_email(data[0]['email']) is False:
             flash("Invalid email!")
         else:
-            signup_db_querry(data)
+            signup_db_query(data)
             flash('Your signup has been submitted!')
     return redirect(url_for('signup'))
 
@@ -90,23 +88,19 @@ def handle_filters():
     if session.get('logged_in'):
         if request.method == 'POST':
             data = dict(request.form.items())
-            # print(data)
+            print(data)
             try:
-                applicant_list = filter_db_querry(data)
-                return render_template("list.html", applicant_list=applicant_list)
-            except ValueError as error:
+                applicant_list = filter_db_query(data)
+                print(applicant_list)
+                if applicant_list is None:
+                    flash("Please choose a filter!")
+                    return redirect(url_for('show_filtering'))
+                else:
+                    return render_template("list.html", applicant_list=applicant_list)
+            except ValueError:
                 return redirect(url_for('show_filtering'))
     else:
         return redirect(url_for('login'))
-
-#
-# # shows data according to the selected filter
-# @app.route('/filtering/<filter>')
-# def show_data(filter):
-#     if session.get('logged_in'):
-#         return render_template('list.html', filter=filter, title='Filtered by ' + filter.title())
-#     else:
-#         return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
