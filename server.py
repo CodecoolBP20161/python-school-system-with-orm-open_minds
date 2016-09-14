@@ -40,7 +40,7 @@ def logout():
     """logout from the app"""
     session.pop('logged_in', None)
     flash('You logged out')
-    return redirect(url_for('login'))
+    return redirect(url_for('show_main_page'))
 
 
 # shows the signup form - writing data to database happens in an other function
@@ -102,4 +102,4 @@ def handle_filters():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="192.168.160.116", port=5000)
