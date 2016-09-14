@@ -1590,6 +1590,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  overflow: scroll;
 }
 @media (min-width: 768px) {
   .container {
@@ -2321,6 +2322,9 @@ th {
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
+.table-striped > tbody > tr {
+  background-color: #fff;
+}
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
@@ -2451,7 +2455,6 @@ table th[class*="col-"] {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
-    overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #eeeeee;
   }
@@ -7181,12 +7184,6 @@ a.list-group-item-danger.active:focus {
 }
 
 body {
-  background: url(img/bg.png) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: left bottom
 }
 
 html {
@@ -7198,12 +7195,18 @@ body {
  margin-top: 60px;
 }
 .footer {
- position: fixed;
- bottom: 0;
- width: 100%;
- /* Set the fixed height of the footer here */
- height: 20px;
- background-color: gray;
- opacity: 0.5;
- color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 20px;
+    background-color: gray;
+    opacity: 0.5;
+    color: white;
+    overflow: hidden;
 }
+.footer .container {
+    overflow: hidden;
+}
+
+.table-responsive { max-height: 520px; overflow-y: auto; }
