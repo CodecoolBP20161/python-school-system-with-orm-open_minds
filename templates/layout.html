@@ -49,7 +49,7 @@
             <ul class="nav navbar-nav navbar-right">
             <li>
                 {% if not session.logged_in %}
-                <a href="{{ url_for('login') }}">Login</a>
+                <a role="button" data-toggle="modal" data-target="#login-modal">Login</a>
                 {% else %}
                 <a href="{{ url_for('logout') }}" >log out</a>
                 {% endif %}
@@ -69,94 +69,7 @@
 </div>
 {% endfor %}
 {% include 'signup.html' %}
-{% block body %}{% endblock %}
-
-<!-- <div id="signup-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-      <div class="modal-content">
-        <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Sign up</h4>
-    </div>
-    <div class="modal-body">
-        <form action="{{ url_for('add_entry') }}" method=post class="form-horizontal">
-            <fieldset>
-
-            <div class="form-group">
-              <label class="col-lg-2 control-label">First name</label>
-              <div class="col-lg-8">
-              <input type="text" class="form-control" placeholder="Enter your first name" name=first_name>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-lg-2 control-label">Last name</label>
-              <div class="col-lg-8">
-              <input type="text" class="form-control" placeholder="Enter your last name" name=last_name>
-              </div>
-            </div>
-
-            <div class="form-group">
-            <label class="col-lg-2 control-label">Email address</label>
-            <div class="col-lg-8">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name=email>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-
-          </div>
-            <div class="form-group">
-              <label class="col-lg-2 control-label">Year of birth</label>
-              <div class="col-lg-8">
-              <input type="number" class="form-control" placeholder="Year of birth" min="1970" max="1998" step="1" name=year_of_birth>
-              </div>
-            </div>
-            <div class="form-group">
-            <label class="col-lg-2 control-label">Gender</label>
-            <div class="col-lg-8">
-            <select class="form-control" required name="gender">
-                        <option value="" disabled selected>-- gender --</option>
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="other">other</option>
-                        <option value="other">horse</option>
-            </select>
-            </div>
-          </div>
-          <div class="form-group">
-              <label class="col-lg-2 control-label">City</label>
-              <div class="col-lg-8">
-              <select class="form-control" required name="city">
-                  <option value="" disabled selected>-- select your city or the nearest city --</option>
-                  <option value="Barcelona">Barcelona</option>
-                  <option value="Budapest">Budapest</option>
-                  <option value="Debrecen">Debrecen</option>
-                  <option value="Eger">Eger</option>
-                  <option value="Győr">Győr</option>
-                  <option value="Krakow">Krakow</option>
-                  <option value="Madrid">Madrid</option>
-                  <option value="Miskolc">Miskolc</option>
-                  <option value="Paris">Paris</option>
-                  <option value="Rome">Rome</option>
-                  <option value="St. Petersburg">St. Petersburg</option>
-                  <option value="Warsaw">Warsaw</option>
-              </select>
-              </div>
-          </div>
-             <div class="form-group">
-                  <div class="col-lg-10 col-lg-offset-2">
-                    <button type="reset" class="btn btn-default" data-toggle="tooltip" title="reset form">Reset</button>
-                    <button type="submit" class="btn btn-primary ">Submit</button>
-                  </div>
-             </div>
-          </fieldset>
-        </form>
-    </div>
-  </div>
-
-</div>
-</div> -->
-
+{% include 'login.html' %}
 <footer class="footer">
   <div class="container">
     <p class="text">© 2016 OpenMinds. All rights reserved.</p>
