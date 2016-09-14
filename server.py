@@ -62,16 +62,7 @@ def add_entry():
         else:
             applicant_signup(data)
             flash('Your signup has been submitted!')
-    return redirect(url_for('signup'))
-
-
-# shows adminmenu (login required)
-# @app.route('/adminmenu')
-# def show_adminmenu():
-#     if session.get('logged_in'):
-#         return render_template('adminmenu.html', title='Admin Menu')
-#     else:
-#         return redirect(url_for('login'))
+    return redirect(url_for('show_main_page'))
 
 
 # shows the filtering menu (login required), filtering uses html form(s)
