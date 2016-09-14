@@ -7209,4 +7209,28 @@ body {
     overflow: hidden;
 }
 
+<<<<<<< HEAD
 .table-responsive { max-height: 520px; overflow-y: auto; }
+=======
+.bodycontainer { max-height: 450px; width: 100%; margin: 0; overflow-y: auto; }
+.table-scrollable { margin: 0; padding: 0; }
+
+thead {
+    background-color: @header_background_color;
+    color: @header_text_color;
+    tr {
+      display: block;
+      position: relative;
+    }
+  }
+
+ tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: @table_body_height;
+    tr:nth-child(even) {
+      background-color: @alternate_row_background_color;
+    }
+  }
+>>>>>>> 86a5606609ac49bc6cabfa2e8dc3f15faf270b83
