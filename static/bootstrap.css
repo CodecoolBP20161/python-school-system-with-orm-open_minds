@@ -1590,6 +1590,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  overflow: scroll;
 }
 @media (min-width: 768px) {
   .container {
@@ -2451,7 +2452,6 @@ table th[class*="col-"] {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
-    overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #eeeeee;
   }
@@ -7207,3 +7207,25 @@ body {
  opacity: 0.5;
  color: white;
 }
+
+.bodycontainer { max-height: 450px; width: 100%; margin: 0; overflow-y: auto; }
+.table-scrollable { margin: 0; padding: 0; }
+
+thead {
+    background-color: @header_background_color;
+    color: @header_text_color;
+    tr {
+      display: block;
+      position: relative;
+    }
+  }
+
+ tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: @table_body_height;
+    tr:nth-child(even) {
+      background-color: @alternate_row_background_color;
+    }
+  }
