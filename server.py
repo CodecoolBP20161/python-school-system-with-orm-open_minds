@@ -25,14 +25,16 @@ def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
-            error = 'Invalid username'
+            flash('Invalid username, try again!')
         elif request.form['password'] != app.config['PASSWORD']:
-            error = 'Invalid password'
+            flash('Invalid password, try again!')
         else:
             session['logged_in'] = True
             flash('You are logged in')
             return redirect(url_for('show_filtering'))
-    return render_template('login.html', error=error, title="Login")
+
+    return redirect(url_for('show_main_page'))
+    # return render_template('login.html', error=error, title="Login")
 
 
 @app.route('/logout')
