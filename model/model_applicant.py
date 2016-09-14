@@ -104,8 +104,7 @@ class Applicant(BaseModel):
             from flask import flash
             if self.status == 'in progress':
                 msg = 'No more free interview slots for {}'.format(self.application_code.upper())
-                print(msg)
-                flash(msg)
+                # print(msg)
             else:
                 pass
 
