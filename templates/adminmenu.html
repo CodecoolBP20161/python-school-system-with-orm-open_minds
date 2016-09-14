@@ -1,17 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
-<p>
-    admin menu
-</p>
-<p>
-    options:
-    <a href="{{ url_for('show_filtering') }}" class="navbutton">filter applicant data</a>
-    <a href="{{ url_for('show_filtering') }}" class="navbutton">option 2</a>
-    <a href="{{ url_for('show_filtering') }}" class="navbutton">option 3</a>
-    <a href="{{ url_for('show_filtering') }}" class="navbutton">option 4</a>
-    <a href="{{ url_for('show_filtering') }}" class="navbutton">option 5</a>
-    <a href="{{ url_for('show_filtering') }}" class="navbutton">option 6</a>
-</p>
+
+    <fieldset >
+        <legend>Admin Menu</legend>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Options:</label>
+            <div class="col-lg-2">
+                <a href="{{ url_for('show_filtering') }}" class="btn btn-primary">filter applicant data</a>
+            </div>
+        </div>
+    </fieldset>
+
 {% block filtering %}
 {% endblock %}
 
