@@ -1,5 +1,5 @@
 def applicant_signup(data):
-    from model_applicant import Applicant
+    from model.model_applicant import Applicant
 
     data[0]['application_code'] = None
     data[0]['status'] = 'new'
@@ -12,8 +12,8 @@ def applicant_signup(data):
 
 
 def admin_filter(data):
-    from model_applicant import Applicant
-    from model_mentor import Mentor
+    from model.model_applicant import Applicant
+    from model.model_mentor import Mentor
     result = []
     try:
         if data['search'] == '':

@@ -1,16 +1,12 @@
-from model_base import *
+from model.model_base import *
+from example_data import schools
 
 
 class School(BaseModel):
     """  School table based on School model. """
     name = CharField()
-
-    schools = [
-        {'name': 'Codecool Budapest'},
-        {'name': 'Codecool Miskolc'},
-        {'name': 'Codecool Krakow'},
-        {'name': 'Codecool Madrid'}
-    ]
+    # import from example_data
+    schools = schools
 
     @staticmethod
     def add_schools():
