@@ -40,7 +40,7 @@
             <li class="active"><a href="{{ url_for('show_main_page') }}">Home <span class="sr-only">(current)</span></a></li>
             <!-- admin menu link -->
                    {% if session.logged_in %}
-                       <li class="active"><a href="{{ url_for('show_adminmenu')}}"> Admin Menu <span class="sr-only">(current)</span></a></li>
+                       <li class="active"><a href="{{ url_for('show_filtering') }}"> filter applicant data <span class="sr-only">(current)</span></a></li>
                    {% endif %}
 
               </ul>
@@ -63,13 +63,16 @@
         </div>
     </div>
 </nav>
+
 {% for message in get_flashed_messages() %}
-<!-- important, don't delete class! -->
-<div class=flash>{{ message }}
-</div>
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}
+    </div>
 {% endfor %}
+
 {% include 'signup.html' %}
 {% include 'login.html' %}
+
 <footer class="footer">
   <div class="container">
     <p class="text">© 2016 OpenMinds. All rights reserved.</p>
