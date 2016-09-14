@@ -2,7 +2,7 @@ from flask import Flask, request, session, redirect, url_for, render_template, f
 from controller_applicant import applicant_signup, admin_filter
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='templates/assets')
 
 
 app.config.update(dict(
@@ -15,11 +15,21 @@ app.config.from_envvar('SCHOOLSYSTEM_SETTINGS', silent=True)
 
 @app.route('/')
 def show_main_page():
-    return render_template('main.html')
+    return render_template('index3.html')
+
+
+@app.route('/slide')
+def slide():
+    return render_template('slider.html')
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def login_succes():
     """login to the app"""
     error = None
     if request.method == 'POST':
@@ -32,8 +42,8 @@ def login():
             flash('You are logged in')
             return redirect(url_for('show_filtering'))
 
-    return redirect(url_for('show_main_page'))
-    # return render_template('login.html', error=error, title="Login")
+    # return redirect(url_for('show_main_page'))
+    return render_template('index3.html')
 
 
 @app.route('/logout')

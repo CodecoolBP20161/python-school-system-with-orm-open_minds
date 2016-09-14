@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Mobirise Free Bootstrap Template, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v2.6.1, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/discover-mobile-350x350-16.png" type="image/x-icon">
+  <meta name="description" content="Free Bootstrap Template">
+  <title>Codecool</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/mobirise/css/style.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
+  <link rel="stylesheet" href="assets/mobirise/css/style.css">
+  <link rel="stylesheet" href="assets/mobirise-slider/style.css">
+  <link rel="stylesheet" href="assets/mobirise-gallery/style.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+</head>
+<body>
+
+<!-- navbar -->
+<section class="mbr-navbar mbr-navbar--freeze mbr-navbar--absolute mbr-navbar--transparent mbr-navbar--sticky mbr-navbar--auto-collapse" id="menu-93">
+    <div class="mbr-navbar__section mbr-section">
+        <div class="mbr-section__container container">
+            <div class="mbr-navbar__container">
+                <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
+                    <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
+                        <span class="mbr-brand__logo"><a href="https://codecool.com/"><img class="mbr-navbar__brand-img mbr-brand__img" src="assets/images/0_home_transparent_cc_logo.png" alt="Mobirise"></a></span>
+                        <span class="mbr-brand__name"><a class="mbr-brand__name text-white" href="https://codecool.com/">CODECOOL</a></span>
+                    </span>
+                </div>
+                <div class="mbr-navbar__hamburger mbr-hamburger text-white"><span class="mbr-hamburger__line"></span></div>
+                <div class="mbr-navbar__column mbr-navbar__menu">
+                    <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
+                        <div class="mbr-navbar__column">
+                            <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active">
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="{{ url_for('show_main_page')}}">HOME</a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="{{ url_for('slide') }}">SLIDER</a></li>
+                                {% if not session.logged_in %}
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#">SIGN UP</a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="https://codecool.hu/blog/">BLOG</a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white"  href="{{ url_for('login') }}">LOG IN</a></li>
+                                {% else %}
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="{{ url_for('logout') }}">LOG OUT</a></li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                        <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="#">CONTACT</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% block body %}{% endblock %}
+
+
+
+
+
+<!-- footer -->
+<footer class="mbr-section mbr-section--relative mbr-section--fixed-size" id="footer1-94" style="background-color: rgb(68, 68, 68);">
+
+    <div class="mbr-section__container container">
+        <div class="mbr-footer mbr-footer--wysiwyg row">
+            <div class="col-sm-12">
+                <p class="mbr-footer__copyright"></p><p>Copyright (c) 2016 OpenMinds. <a href="https://codecool.com/" class="text-gray">License</a></p><p></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/smooth-scroll/SmoothScroll.js"></script>
+    <script src="assets/jarallax/jarallax.js"></script>
+    <script src="assets/mobirise/js/script.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="assets/smooth-scroll/SmoothScroll.js"></script>
+    <script src="assets/jarallax/jarallax.js"></script>
+    <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
+    <script src="assets/masonry/masonry.pkgd.min.js"></script>
+    <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/social-likes/social-likes.js"></script>
+    <script src="assets/mobirise-gallery/script.js"></script>
+
+
+</body>
+</html>

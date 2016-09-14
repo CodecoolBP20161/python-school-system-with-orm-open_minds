@@ -1,41 +1,46 @@
 
+{% extends "index2.html" %}
+{% block content %}
+
 <!-- add_entry function needed -->
 {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-<div id="login-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
 
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Login</h4>
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="form1-89" style="background-color: rgb(239, 239, 239);">
+
+    <div class="mbr-section__container mbr-section__container--std-padding container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
+                        <div class="mbr-header mbr-header--center mbr-header--std-padding">
+                            <h2 class="mbr-header__text">LOG IN</h2>
+                        </div>
+                        <div data-form-alert="true"></div>
+                        <form action="{{ url_for('login_succes') }}" method=post data-form-title="LOGIN FORM">
+                            <!-- <input type="hidden" value="" data-form-email="true"> -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name=username  placeholder="Username" data-form-field="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name=password placeholder="Password" data-form-field="Password" required>
+                            </div>
+                            <!-- <div class="form-group">
+                                <input type="email" class="form-control" name="email" required="" placeholder="Email*" data-form-field="Email">
+                            </div> -->
+                            <!-- <div class="form-group">
+                                <input type="tel" class="form-control" name="phone" placeholder="Phone" data-form-field="Phone">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" placeholder="Message" rows="7" data-form-field="Message"></textarea>
+                            </div> -->
+
+                            <div class="mbr-buttons mbr-buttons--right"><button type="submit" class="mbr-buttons__btn btn btn-lg btn-warning">LOG IN</button></div>
+                        </form>
+                    </div>
                 </div>
-
-            <div class="modal-body">
-                <form action="{{ url_for('login') }}" method=post class="form-horizontal">
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Username</label>
-                            <div class="col-lg-8">
-                                <input type="text" class="form-control" placeholder="Username" name=username required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">Password</label>
-                            <div class="col-lg-8">
-                                <input type="password" class="form-control" placeholder="Password" name=password required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </div>
-
-                        </div>
-                    </fieldset>
-                </form>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+{% endblock %}
