@@ -43,12 +43,7 @@ def logout():
     return redirect(url_for('show_main_page'))
 
 
-# shows the signup form - writing data to database happens in an other function
-@app.route('/signup', methods=['POST', 'GET'])
-def signup():
-    return redirect(url_for('show_main_page',  title='Signup'))
-
-
+# handles the signup form
 @app.route('/add', methods=['POST'])
 def add_entry():
     if request.method == 'POST':
@@ -71,7 +66,7 @@ def show_filtering():
     if session.get('logged_in'):
         return render_template('filtering.html', title='Filters')
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('show_main_page'))
 
 
 @app.route('/filtering/apply', methods=['POST'])
@@ -89,7 +84,7 @@ def handle_filters():
             except ValueError:
                 return redirect(url_for('show_filtering'))
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('show_main_page'))
 
 
 if __name__ == "__main__":
