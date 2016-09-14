@@ -1,5 +1,4 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
-from validate_email import validate_email
 from controller_applicant import applicant_signup, admin_filter
 
 
@@ -48,15 +47,8 @@ def logout():
 def add_entry():
     if request.method == 'POST':
         data = [dict(request.form.items())]
-        if data[0]['first_name'].isalpha() is False:
-            flash("Invalid first name!")
-        elif data[0]['last_name'].isalpha() is False:
-            flash("Invalid last name!")
-        elif validate_email(data[0]['email']) is False:
-            flash("Invalid email!")
-        else:
-            applicant_signup(data)
-            flash('Your signup has been submitted!')
+        applicant_signup(data)
+        flash('Your signup has been submitted!')
     return redirect(url_for('show_main_page'))
 
 

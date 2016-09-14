@@ -21,6 +21,8 @@
                                            class="form-control"
                                            placeholder="Enter your first name"
                                            name=first_name
+                                           pattern="[A-Za-z]{1,}"
+                                           title="Just letter, please!"
                                            required
                                     >
                                 </div>
@@ -33,6 +35,8 @@
                                            class="form-control"
                                            placeholder="Enter your last name"
                                            name=last_name
+                                           pattern="[A-Za-z]{1,}"
+                                           title="Just letter, please!"
                                            required
                                     >
                                 </div>
@@ -41,7 +45,7 @@
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">Email address</label>
                                 <div class="col-lg-8">
-                                    <input type="text"
+                                    <input type="email"
                                            class="form-control"
                                            id="exampleInputEmail1"
                                            placeholder="Enter email"

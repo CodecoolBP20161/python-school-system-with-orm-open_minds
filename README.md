@@ -27,8 +27,6 @@ In this project we use the following technologies:
 
 5.) Flask micro-framework
 
-6.) validate_email to verify  email addresses
-
 
 
 ## Web Usage
