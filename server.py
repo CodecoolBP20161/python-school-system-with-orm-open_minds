@@ -46,7 +46,7 @@ def logout():
 # shows the signup form - writing data to database happens in an other function
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
-    return render_template('signup.html', title='Signup')
+    return redirect(url_for('show_main_page',  title='Signup'))
 
 
 @app.route('/add', methods=['POST'])
