@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <title>
+            {% if title %}
+            {{ title }} | School System by OpenMinds
+            {% else %}
+            School System by OpenMinds
+            {% endif %}
+        </title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <!-- Custom script as written on bootstrap page -->
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('show_main_page') }}">School System by OpenMinds</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <!-- home link -->
+                        <li class="active">
+                            <a href="{{ url_for('show_main_page') }}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- admin menu link -->
+                               {% if session.logged_in %}
+                                   <li class="active">
+                                       <a href="{{ url_for('show_filtering') }}"> filter applicant data <span class="sr-only">(current)</span></a>
+                                   </li>
+                               {% endif %}
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            {% if not session.logged_in %}
+                                <a role="button" data-toggle="modal" data-target="#login-modal">Login</a>
+                            {% else %}
+                                <a href="{{ url_for('logout') }}" >log out</a>
+                            {% endif %}
+
+                        </li>
+                            {% if not session.logged_in %}
+                                <!-- form link -->
+                                <a class="btn btn-primary loginbtn"
+                                   role="button"
+                                   data-toggle="modal"
+                                   data-target="#signup-modal"
+                                >Sign up</a>
+                            {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}
+            </div>
+        {% endfor %}
+
+        {% include 'signup.html' %}
+        {% include 'login.html' %}
+
+        {% block body %}
+        {% endblock %}
+
+        <footer class="footer">
+          <div class="container">
+            <p class="text">© 2016 OpenMinds. All rights reserved.</p>
+          </div>
+        </footer>
+
+    </body>
+
+</html>

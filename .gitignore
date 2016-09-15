@@ -90,3 +90,6 @@ ENV/
 
 # Pycharm folders
 .idea/
+
+# Local database data
+db.nfo

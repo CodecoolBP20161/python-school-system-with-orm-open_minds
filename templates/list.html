@@ -1,0 +1,39 @@
+{% extends "filtering.html" %}
+{% block list %}
+
+<div class="table-responsive">
+   <table class="table table-striped table-hover table-condensed table-scrollable">
+    <thead>
+
+       <tr>
+           <th>application code</th>
+           <th>first name</th>
+           <th>last name</th>
+           <th>email</th>
+           <th>year of birth</th>
+           <th>gender</th>
+           <th>city</th>
+           <th>assigned school</th>
+           <th>status</th>
+       </tr>
+    </thead>
+    <tbody>
+       {% for applicant in applicant_list %}
+
+           <tr>
+               <td>{{ applicant.application_code }}</td>
+               <td>{{ applicant.first_name }}</td>
+               <td>{{ applicant.last_name }}</td>
+               <td>{{ applicant.email }}</td>
+               <td>{{ applicant.year_of_birth }}</td>
+               <td>{{ applicant.gender }}</td>
+               <td>{{ applicant.city }}</td>
+               <td>{{ applicant.assigned_school.name }}</td>
+               <td>{{ applicant.status }}</td>
+           </tr>
+
+       {% endfor %}
+   </tbody>
+   </table>
+</div>
+{% endblock %}

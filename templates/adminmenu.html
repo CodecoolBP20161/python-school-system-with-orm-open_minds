@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <fieldset >
+        <legend>Admin Menu</legend>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Options:</label>
+            <div class="col-lg-2">
+                <a href="{{ url_for('show_filtering') }}" class="btn btn-primary">filter applicant data</a>
+            </div>
+        </div>
+    </fieldset>
+
+    {% block filtering %}
+    {% endblock %}
+
+{% endblock %}
